@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header-fixed"
+            style="background-color: #fff; padding-bottom: 5px; border-bottom: 1px solid #dcdcdd;">
+            <div class="grid wide">
+                <nav class="navbar hide-on-mb-tl">
+                    <ul class="navbar-list">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <li>
+                                <a href="index.html">
+                                    <img style="width: 48px; height: 28px; cursor: pointer;"
+                                        src="./assets/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
+                                </a>
+                            </li>
+                            <li id="followingHeader" class="hoverHeader" style="margin-left: 20px; cursor: pointer;">
+                                <h2>Following</h2>
+                            </li>
+                            <li class="hoverHeader" style="margin-left: 30px; cursor: pointer;">
+                                <h2>Browser</h2>
+                            </li>
+                        </div>
+                    </ul>
+
+                    <ul class="navbar-list">
+                        <div class="header__search" style="display: flex; align-items: center;">
+                            <div class="header__search-input-wrap">
+                                <input type="text" class="header__search-input" style="border: 1px solid #333;"
+                                    placeholder="Search">
+                            </div>
+                            <button class="header__search-btn">
+                                <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </ul>
+
+                    <ul class="navbar-list">
+                        <div id="formLoginARegister" style="display: none;">
+                            <li style="color: var(--primary-color-2);"
+                                class="navbar-item navbar-item--bold navbar-item--separate js-modal-register">Đăng ký
+                            </li>
+                            <li style="color: var(--primary-color-2);"
+                                class="navbar-item navbar-item--bold js-modal-login">
+                                Đăng nhập</li>
+                        </div>
+
+                        <div>
+                            <svg id="bitMenu" width="20px" height="20px" version="1.1" viewBox="0 0 20 20" x="0px"
+                                y="0px" aria-hidden="true" focusable="false"
+                                class="ScIconSVG-sc-1q25cff-1 dSicFr mr-5 cs-p">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3 12l7-10 7 10-7 6-7-6zm2.678-.338L10 5.487l4.322 6.173-.85.728L10 11l-3.473 1.39-.849-.729z">
+                                </path>
+                            </svg>
+                            <ul class="bits-menu">
+                                <li class="navbar-user-item">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <span style="text-align: center;" class="w-100">
+                                            <div style="color: #333; font-weight: 550;">Purchase Anna</div>
+                                            <div>You have 0 Anna</div>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 10px 0;">
+                                        <div style="color: #333;" class="ml-10">Prices are shown in
+                                            VND
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;"
+                                        class="d-flex align-item-center justify-content-between">
+                                        <div>
+                                            <div>
+                                                <span style="font-weight: bolder;">20 Anna</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit1.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit2.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-3">
+                                                <button id="btnFinalBits" class="btn btn--primary">20k</button>
+                                            </div>
+                                            <!-- <div class="mt-5">
+                                                <span>29% discount</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;"
+                                        class="d-flex align-item-center justify-content-between">
+                                        <div>
+                                            <div>
+                                                <span style="font-weight: bolder;">50 Anna</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit1.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit2.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit3.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit4.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-3">
+                                                <button id="btnFinalBits" class="btn btn--primary">50k</button>
+                                            </div>
+                                            <!-- <div class="mt-5">
+                                                <span>8% discount</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;"
+                                        class="d-flex align-item-center justify-content-between">
+                                        <div>
+                                            <div>
+                                                <span style="font-weight: bolder;">100 Anna</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit1.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit2.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit3.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit4.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/assets/img/bit5.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-3">
+                                                <button id="btnFinalBits" class="btn btn--primary">100k</button>
+                                            </div>
+                                            <!-- <div class="mt-5">
+                                                <span>8% discount</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <li id="menuAvt" class="navbar-item navbar-user" style="display: block;">
+                            <img src="./assets/img/avt_user.png" alt="avatar" class="navbar-user-avt">
+                            <ul class="navbar-user-menu">
+                                <li class="navbar-user-item">
+                                    <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <img src="/assets/img/avt_user.png" class="navbar-user-avt" alt="">
+                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                    </div>
+                                </li>
+                                <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-camera"></i>
+                                        <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-regular fa-star"></i>
+                                        <span id="packageRegister" style="color: #333;" class="ml-10">Gói đăng ký theo
+                                            dõi</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-wallet"></i>
+                                        <span id="twitchWallet" style="color: #333;" class="ml-10">Anna Wallet</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-gear"></i>
+                                        <span id="setting" style="color: #333;" class="ml-10">Cài đặt</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="app__container">
+            <div class="grid wide">
+                <div class="row sm-gutters app__content">
+                    <div id="layout2_10" class="col l-2 nav-fixed">
+                        <div style="height: 100%; position: sticky;" class="category">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: 0 16px 0 0;">
+                                <h3 class="category__heading">
+                                    For You
+                                </h3>
+                                <i id="toggleLayout2_10" class="fa-solid fa-arrow-left-long cs-p"></i>
+                            </div>
+
+                            <div style="display: flex; align-items: center; justify-content: space-between;"
+                                class="category-list-2">
+                                <p style="color: #89898b;">FOLLOWED CHANNELS</p>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- menu click -->
+                    <div style="display: none;" id="navFixedLayout2_10" class="l-1 nav-toggle">
+                        <div style=" height: 100%; margin-left: 2px;" class="category" data-condition="minimized">
+                            <div class="p-16" style="text-align: center; font-size: 18px;">
+                                <i id="toggleLayout2_10Back" class="fa-solid fa-arrow-right cs-p"></i>
+                            </div>
+                            <div class="category-list-2">
+                                <div>
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                </div>
+                            </div>
+                            <div class="category-list-2 mt-20">
+                                <div>
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                </div>
+                            </div>
+                            <div class="category-list-2">
+                                <div>
+                                    <img src="/assets/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="contentLayout2_10" class="col l-10 content-fixed pb-250">
+                        <div class="mt-30">
+                            <div style="padding: 0 16px 0 16px;">
+                                <div class="d-flex justify-content-between">
+                                    <div style="display: flex;">
+                                        <div class="" style="width: 100%;">
+                                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                                <h1 class="mb-10" style="font-weight: bolder; font-size: 40px;">
+                                                    Settings
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex mt-30 justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="cs-p" id="setting"
+                                            style="font-weight: 500; font-size: 18px; color: #333;">
+                                            Profile
+                                        </div>
+                                        <div id="settingSecurity"
+                                            style="font-weight: 500; font-size: 18px; color: var(--primary-color-2); margin-left: 20px;"
+                                            class="cs-p">
+                                            Security and Privacy
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h2 class="mt-30">Contact</h2>
+                                <span>Where we send important messages about your account</span>
+                                <div class="mt-8"
+                                    style="width: 700px; height: auto; background-color: #fff; border-radius: 10px;">
+                                    <div style="padding: 20px 40px;">
+                                        <div class="d-flex">
+                                            <div class="row align-item-center justify-content-between w-100">
+                                                <h3 class="l-2" style="margin: 0; text-align: left;">Username</h3>
+                                                <div class="l-10">
+                                                    <div id="formDefaultUsernameSettingSecurity">
+                                                        <div class="d-flex justify-content-between">
+                                                            <h4 style="margin: 0; font-size: 18px;">
+                                                                c****@g***.com</h4>
+                                                            <div>
+                                                                <i style="font-size: 16px;"
+                                                                    class="fa-regular fa-eye"></i>
+                                                                <i id="editUsernameSecurity" style="font-size: 16px;"
+                                                                    class="fa-regular fa-pen-to-square ml-10 cs-p"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-8">Verified. Thank you for verifying your email.
+                                                        </div>
+                                                        <div class="mt-10">This email is linked to your account.</div>
+                                                    </div>
+
+                                                    <div id="formEditUsernameSettingSecurity" style="display: none;">
+                                                        <input class="p-5 w-100 bdr-3" type="text"
+                                                            value="cellnguyen2003@gmail.com">
+                                                        <div class="mt-10">Please confirm your new email address.</div>
+                                                        <input class="p-5 w-100 bdr-3" type="text"
+                                                            value="cellnguyen2003@gmail.com">
+                                                        <div class="mt-10"><span>Verified.</span> Thank you for
+                                                            verifying
+                                                            your email.
+                                                        </div>
+                                                        <div class="mt-10">
+                                                            <button style="min-width: 58px;"
+                                                                class="btn btn--primary">Save</button>
+                                                            <button id="cancelEditUsernameSettingSecurity"
+                                                                class="ml-10 btn"
+                                                                style="background-color: #ededef;">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-8" style="border-bottom: 1px solid #e2e2e6;"></div>
+                                        <div class="d-flex mt-8">
+                                            <div class="row align-item-center justify-content-between w-100">
+                                                <h3 class="l-2" style="margin: 0; text-align: left;">Phone Number</h3>
+                                                <div class="l-10">
+                                                    <div id="defaultPhoneNumberSettingSecu">
+                                                        <span id="addNumberSettingSecu" class="cs-p"
+                                                            style="color: var(--primary-color-2);">Add a
+                                                            number</span>
+                                                    </div>
+                                                    <div id="formAddPhoneSettingSecu" style="display: none;">
+                                                        <input type="text" class="w-100 p-5">
+                                                        <div class="mt-10">
+                                                            <button style="min-width: 58px;"
+                                                                class="btn btn--primary">Save</button>
+                                                            <button id="cancelAddPhoneSettingSecu" class="ml-10 btn"
+                                                                style="background-color: #ededef;">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  -->
+                                <h2 class="mt-30">Security</h2>
+                                <span>Keep your account safe and sound</span>
+                                <div class="mt-8"
+                                    style="width: 700px; height: auto; background-color: #fff; border-radius: 10px;">
+                                    <div style="padding: 20px 40px;">
+                                        <div>
+                                            <div
+                                                class="d-flex row align-item-center justify-content-between w-100 mt-10">
+                                                <h3 class="l-2" style="margin: 0; text-align: left;">Password
+                                                </h3>
+                                                <div class="l-10">
+                                                    <span id="enableChangePassword" class="cs-p"
+                                                        style="color: var(--primary-color-2);">
+                                                        Change password.</span> Improve your security with a strong
+                                                    password.
+                                                </div>
+                                            </div>
+                                            <!-- <div class="row mt-8" style="border-bottom: 1px solid #e2e2e6;"></div>
+
+                                            <div
+                                                class="d-flex row align-item-center justify-content-between w-100 mt-8">
+                                                <h3 class="l-2" style="margin: 0; text-align: left;">New Password
+                                                </h3>
+                                                <div class="l-10">
+                                                    <span class="cs-p" style="color: var(--primary-color-2);">
+                                                        Change password.</span> Improve your security with a strong
+                                                    password.
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal layout -->
+                <div class="modal js-modal">
+                    <div class="modal__overlay js-modal__overlay"></div>
+
+                    <div class="modal__body js-modal__body">
+                        <!-- Form regitser -->
+                        <div class="auth-form js-auth-form">
+                            <div class="auth-form__container">
+                                <div class="auth-form__header">
+                                    <h3 class="auth-form__heading">Đăng ký</h3>
+                                    <span id="redirectLogin" class="auth-form__switch-btn">Đăng nhập</span>
+                                </div>
+
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group">
+                                        <input type="text" class="auth-form__input" placeholder="Enter email">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input type="password" class="auth-form__input" placeholder="Enter password">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input type="password" class="auth-form__input"
+                                            placeholder="Enter password again">
+                                    </div>
+                                </div>
+
+                                <div class="auth-form__aside">
+                                    <p class="auth-form__policy-text">
+                                        Bang viec dang ky, ban da dong y voi Anna ve
+                                        <a href="" class="auth-form__text-link">Dieu khoan dich vu</a> &
+                                        <a href="" class="auth-form__text-link">Chinh sach bao mat</a>
+                                    </p>
+                                </div>
+
+                                <div class="auth-form__controls">
+                                    <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">Trở
+                                        lại</button>
+                                    <button class="btn btn--primary">Đăng ký</button>
+                                </div>
+                            </div>
+
+                            <div class="auth-form__socials">
+                                <a href="" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-facebook-square"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Facebook
+                                    </span>
+                                </a>
+                                <a href="" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Google
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Form login -->
+                        <div class="auth-form js-auth-form">
+                            <div class="auth-form__container">
+                                <div class="auth-form__header">
+                                    <h3 class="auth-form__heading">Đăng nhập</h3>
+                                    <span id="redirectRegister" class="auth-form__switch-btn">Đăng ký</span>
+                                </div>
+
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group">
+                                        <input type="text" class="auth-form__input" placeholder="Enter email">
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input type="password" class="auth-form__input" placeholder="Enter password">
+                                    </div>
+                                </div>
+
+                                <div class="auth-form__aside">
+                                    <div class="auth-form__help">
+                                        <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                                        <span class="auth-form__help-separate"></span>
+                                        <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                                    </div>
+                                </div>
+
+                                <div class="auth-form__controls">
+                                    <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">TRỞ
+                                        LẠI</button>
+                                    <button id="login" class="btn btn--primary">ĐĂNG NHẬP</button>
+                                </div>
+                            </div>
+
+                            <!-- <div class="auth-form__socials">
+                                <a href="" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-facebook-square"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Facebook
+                                    </span>
+                                </a>
+                                <a href="" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Google
+                                    </span>
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal edit password -->
+                <div id="modalEditPassword" class="modal-package-register">
+                    <div class="modal-content-package-register content-fixed">
+                        <span id="closeModalEditpassword" class="modal-close-package-register">&times;</span>
+                        <h1 style="text-align: center;">Confirm your password</h1>
+                        <div class="mt-10">
+                            <div>
+                                <div class="d-flex align-item-center">
+                                    <img src="./assets/img/avt_user.png" class="navbar-user-avt" alt="">
+                                    <span class="ml-10">user123</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <div>For security, please enter your password to continue.</div>
+                        </div>
+                        <div class="mt-10">
+                            <div>Password</div>
+                            <div style="position: relative;">
+                                <input id="inputEditPassword" class="w-100 p-5" type="password">
+                                <div style="position: absolute; right: 8px; bottom: 6px;">
+                                    <i id="eyeOpenPassword" class="fa-solid fa-eye cs-p"></i>
+                                    <i id="eyeClosePassword" class="fa-solid fa-eye-slash cs-p d-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8" style="text-align: center;">
+                            <button id="withdrawMoneyFinal" class="btn btn--primary w-100">Xác minh</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modalBits" class="modal-package-register">
+                    <div class="modal-content-package-register content-fixed">
+                        <span id="closeModal4" class="modal-close-package-register">&times;</span>
+                        <h1>Complete Purchase</h1>
+                        <p>Purchase Summary</p>
+                        <div class="d-flex justify-content-between align-item-center">
+                            <div class="d-flex">
+                                <img style="width: 30px; height: 30px;" src="./assets/img/bit2.png" alt="">
+                                <div class="ml-5">
+                                    <h3 style="margin: 0;">300 Anna Bundle</h3>
+                                    <div>One-time charge on Jun 26, 2023.</div>
+                                </div>
+                            </div>
+                            <div class="mb-5">
+                                <div>Số lượng</div>
+                                <div>
+                                    <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <div class="d-flex justify-content-between">
+                                <span>Bạn có Anna Gift Card không ? <span style="color: var(--primary-color-2);">Hãy
+                                        quy đổi ngay</span> </span>
+                                <div class="d-flex">
+                                    <span style="font-weight: 550;">Total including VAT
+                                    </span>
+                                    <span class="ml-5">300k</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h2>Thanh toán bằng</h2>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">Amazon
+                                    Pay</button>
+                                <button class="btn" style="width: 48%; background-color: #89898b;">Phương thức
+                                    khác</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
