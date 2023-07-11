@@ -1,5 +1,5 @@
 const modal = document.querySelector('.js-modal');
-const modalOverlay = document.querySelector('.js-modal__overlay');
+const modalOverlay = document.querySelectorAll('.js-modal__overlay');
 const modalBtnBack = document.querySelectorAll('#js-modal-btn-back');
 
 const btnLogin = document.querySelectorAll('.js-modal-login');
@@ -12,6 +12,13 @@ const authForm = document.querySelectorAll('.js-auth-form');
 function removeForm() {
     modal.style.display = 'none';
 }
+//click Goi dang ky
+let signsubs = document.querySelectorAll("#signsubs")
+signsubs.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = './package_register.html'
+    })
+})
 
 // click login show form
 btnLogin.forEach(e => {
@@ -50,13 +57,23 @@ redirectRegister.forEach(e => {
     })
 })
 
+// forgot password
+let forgotPassword = document.querySelectorAll("#forgotPassword")
+forgotPassword.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = './forgot_password.html'
+    })
+})
+
 // click back remove form
 modalBtnBack.forEach((item) => {
     item.addEventListener('click', removeForm)
 })
 
 // click overlay remove form
-modalOverlay.addEventListener('click', removeForm);
+modalOverlay.forEach(e => {
+    e.addEventListener('click', removeForm);
+})
 
 // for (var i = 0; i < form.length; i++) {
 
@@ -125,49 +142,49 @@ headerItemMb.forEach((item) => {
 let browse = document.querySelectorAll("#browse")
 browse.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/browse.html"
+        location.href = "./browse.html"
     })
 })
 
 let liveChannel = document.querySelectorAll("#liveChannel")
 liveChannel.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/browse_live.html"
+        location.href = "./browse_live.html"
     })
 })
 
 let browseCategory = document.querySelectorAll("#browseCategory")
 browseCategory.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/browse.html"
+        location.href = "./browse.html"
     })
 })
 
 let followingHeader = document.querySelectorAll("#followingHeader")
 followingHeader.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/following.html"
+        location.href = "./following.html"
     })
 })
 
 let detailCategory = document.querySelectorAll("#detailCategory")
 detailCategory.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/detail_category_browse.html"
+        location.href = "./detail_category_browse.html"
     })
 })
 
 let detaiAvt = document.querySelectorAll("#detaiAvt")
 detaiAvt.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/detail_avt.html"
+        location.href = "./detail_avt.html"
     })
 })
 
 let live = document.querySelectorAll("#live")
 live.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/live.html"
+        location.href = "./live.html"
     })
 })
 
@@ -175,49 +192,63 @@ live.forEach(e => {
 let channels = document.querySelectorAll("#channels")
 channels.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/channel_2.html"
+        location.href = "./channel_2.html"
     })
 })
 
 let videoChannels = document.querySelectorAll("#videoChannels")
 videoChannels.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/channel_videos.html"
+        location.href = "./channel_videos.html"
     })
 })
 
 let packageRegister = document.querySelectorAll("#packageRegister")
 packageRegister.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/package_register.html"
+        location.href = "./package_register.html"
     })
 })
 
 let twitchWallet = document.querySelectorAll("#twitchWallet")
 twitchWallet.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/twitch_wallet.html"
+        location.href = "./twitch_wallet.html"
     })
 })
 
 let setting = document.querySelectorAll("#setting")
 setting.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/setting.html"
+        location.href = "./setting.html"
     })
 })
 
 let settingSecurity = document.querySelectorAll("#settingSecurity")
 settingSecurity.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/setting_security.html"
+        location.href = "./setting_security.html"
     })
 })
 
 let scheduleChannels = document.querySelectorAll("#scheduleChannels")
 scheduleChannels.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/channel_schedule.html"
+        location.href = "./channel_schedule.html"
+    })
+})
+
+let creatorDashboard = document.querySelectorAll("#creatorDashboard")
+creatorDashboard.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = "./creator_dashboard.html"
+    })
+})
+
+let backToHome = document.querySelectorAll("#backToHome")
+backToHome.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = "./index.html"
     })
 })
 
@@ -516,7 +547,7 @@ toggleNavChannel2.forEach(e => {
 // channel_2
 let editChannel2 = document.querySelectorAll("#editChannel2")
 let modalChannel2 = document.querySelector("#modalChannel2")
-let closeModal4 = document.querySelector("#closeModal4")
+let closeModal4 = document.querySelectorAll("#closeModal4")
 
 editChannel2.forEach(e => {
     e.addEventListener("click", () => {
@@ -524,29 +555,31 @@ editChannel2.forEach(e => {
     })
 })
 
-closeModal4.addEventListener("click", () => {
-    modalChannel2.style.display = "none"
+closeModal4.forEach(e => {
+    e.addEventListener("click", () => {
+        modalChannel2.style.display = "none"
+    })
 })
 
 // wallet
 let walletAnna = document.querySelectorAll("#walletAnna")
 walletAnna.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/twitch_wallet.html"
+        location.href = "./twitch_wallet.html"
     })
 })
 
 let walletPaymentHistory = document.querySelectorAll("#walletPaymentHistory")
 walletPaymentHistory.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/wallet_payment_history.html"
+        location.href = "./wallet_payment_history.html"
     })
 })
 
 let walletAnnaHistory = document.querySelectorAll("#walletAnnaHistory")
 walletAnnaHistory.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/wallet_anna_history.html"
+        location.href = "./wallet_anna_history.html"
     })
 })
 
@@ -554,14 +587,14 @@ walletAnnaHistory.forEach(e => {
 let userProfile = document.querySelectorAll("#userProfile")
 userProfile.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/setting.html"
+        location.href = "./setting.html"
     })
 })
 
 let userChannel = document.querySelectorAll("#userChannel")
 userChannel.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/channel.html"
+        location.href = "./channel.html"
     })
 })
 
@@ -569,21 +602,21 @@ userChannel.forEach(e => {
 let detailAvt = document.querySelectorAll("#detailAvt")
 detailAvt.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/detail_avt.html"
+        location.href = "./detail_avt.html"
     })
 })
 
 let detailAvtSchedule = document.querySelectorAll("#detailAvtSchedule")
 detailAvtSchedule.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/detail_avt_schedule.html"
+        location.href = "./detail_avt_schedule.html"
     })
 })
 
 let detailAvtVideo = document.querySelectorAll("#detailAvtVideo")
 detailAvtVideo.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "/detail_avt_video.html"
+        location.href = "./detail_avt_video.html"
     })
 })
 

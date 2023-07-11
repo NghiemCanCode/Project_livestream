@@ -90,7 +90,7 @@
                                 </li>
                                 <li class="navbar-user-item navbar-user-item--separate">
                                     <div style="padding: 10px 0;">
-                                        <div style="color: #333;" class="ml-10">Giá được hiển thị 
+                                        <div style="color: #333;" class="ml-10">Giá được hiển thị
                                             VND
                                         </div>
                                     </div>
@@ -195,7 +195,14 @@
                                         <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
                                     </div>
                                 </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
+                                <li id="creatorDashboard" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-clipboard"></i>
+                                        <span style="color: #333;" class="ml-10">Creator
+                                            Dashboard</span>
+                                    </div>
+                                </li>
+                                <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
                                     <div style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <i style="color: #333;" class="fa-regular fa-star"></i>
                                         <span style="color: #333;" class="ml-10">Gói đăng ký theo dõi</span>
@@ -234,7 +241,7 @@
                             <div
                                 style="display: flex; justify-content: space-between; align-items: center; padding: 0 16px 0 0;">
                                 <h3 class="category__heading">
-                                   Dành cho bạn
+                                    Dành cho bạn
                                 </h3>
                                 <i id="toggleLayout2_10" class="fa-solid fa-arrow-left-long cs-p"></i>
                             </div>
@@ -816,6 +823,9 @@
                         <div class="auth-form__group">
                             <input type="password" class="auth-form__input" placeholder="Enter password again">
                         </div>
+                        <div class="auth-form__group">
+                            <input type="date" class="auth-form__input" placeholder="Enter Birthday ">
+                        </div>
                     </div>
 
                     <div class="auth-form__aside">
@@ -867,7 +877,8 @@
 
                     <div class="auth-form__aside">
                         <div class="auth-form__help">
-                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                            <a id="forgotPassword" href="##" class="auth-form__help-link auth-form__help-forgot">Quên
+                                mật khẩu</a>
                             <span class="auth-form__help-separate"></span>
                             <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
                         </div>
@@ -901,10 +912,10 @@
         <div class="modal-content-package-register content-fixed">
             <span id="closeModal4" class="modal-close-package-register">&times;</span>
             <h1>Hoàn tất mua hàng</h1>
-                    <p>Tóm tắt mua hàng</p>
+            <p>Tóm tắt mua hàng</p>
             <div class="d-flex justify-content-between align-item-center">
                 <div class="d-flex">
-                    <img style="width: 30px; height: 30px;" src="../assets/img/bit2.png" alt="">
+                    <img style="width: 30px; height: 30px;" src="./assets/img/bit2.png" alt="">
                     <div class="ml-5">
                         <h3 style="margin: 0;">300 Anna </h3>
                         <div>Mua 1 lần vào 26/6/2023</div>
@@ -934,13 +945,13 @@
                     <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">
                         Paypal</button>
                     <button class="btn" style="width: 48%; background-color: #89898b;">Trở lại
-                        </button>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../assets/js/index.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>
