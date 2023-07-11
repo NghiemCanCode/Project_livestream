@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .tab-container {
+            width: 1000px;
+            height: 600px;
+            margin: 20px auto;
+        }
+
+        .tablinks {
+            background-color: #f2f2f2;
+            border: none;
+            color: #000;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 33.33%;
+            float: left;
+        }
+
+        .tablinks:hover {
+            background-color: #ddd;
+        }
+
+        .tablinks.active {
+            background-color: #ccc;
+        }
+
+        .tab {
+            display: none;
+            clear: both;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-show-chart {
+            position: absolute;
+            z-index: 1;
+            right: 10px;
+            top: 100%;
+            width: 200px;
+            padding-left: 0;
+            border-radius: 2px;
+            background-color: var(--white-color);
+            list-style: none;
+            box-shadow: 0 1px 5px #333;
+            /* overflow: hidden; */
+            display: none;
+            margin-top: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="app">
+        <header class="header-fixed"
+            style="background-color: #fff; padding-bottom: 5px; border-bottom: 1px solid #dcdcdd;">
+            <div class="grid wide">
+                <nav class="navbar hide-on-mb-tl">
+                    <ul class="navbar-list">
+                        <div class="header__search" style="display: flex; align-items: center;">
+                            <button class="header__search-btn">
+                                <i style="color: var(--white-color); font-size: 18px;" class="fa-solid fa-bars"></i>
+                            </button>
+                        </div>
+                    </ul>
+
+                    <ul class="navbar-list">
+                        <li id="menuAvt" class="navbar-item navbar-user" style="display: block;">
+                            <img src="./assets/img/avt_user.png" alt="avatar" class="navbar-user-avt">
+                            <ul class="navbar-user-menu">
+                                <li class="navbar-user-item">
+                                    <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <img src="./assets/img/avt_user.png" class="navbar-user-avt" alt="">
+                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                    </div>
+                                </li>
+                                <li id="backToHome" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-house"></i>
+                                        <span style="color: #333;" class="ml-10">Back to Anna</span>
+                                    </div>
+                                </li>
+                                <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-camera"></i>
+                                        <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
+                                    </div>
+                                </li>
+                                <li id="creatorDashboard" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-clipboard"></i>
+                                        <span style="color: #333;" class="ml-10">Creator
+                                            Dashboard</span>
+                                    </div>
+                                </li>
+                                <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-regular fa-star"></i>
+                                        <span id="packageRegister" style="color: #333;" class="ml-10">Gói đăng ký theo
+                                            dõi</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-wallet"></i>
+                                        <span id="twitchWallet" style="color: #333;" class="ml-10">Anna Wallet</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-gear"></i>
+                                        <span id="setting" style="color: #333;" class="ml-10">Cài đặt</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="app__container">
+            <div class="grid wide">
+                <div class="row sm-gutters app__content">
+                    <div style="margin-left: 0; padding-bottom: 58px;" class="col l-12 content-fixed">
+                        <div style="text-align: center;">
+                            <!--  -->
+                            <div class="tab-container">
+                                <!--  -->
+                                <div style="display: flex;">
+                                    <button class="tablinks" onclick="openTab(event, 'tab1')">
+                                        <div class="d-flex align-item-center" style="justify-content: center;">
+                                            <div>
+                                                <div style="color: var(--primary-color-2); font-size: 20px;">1.8</div>
+                                                <div>Average Viewers</div>
+                                            </div>
+                                            <div style="position: relative; right: -40px;">
+                                                <i onclick="clickModal(0)" style="padding: 6px;"
+                                                    class="fa-solid fa-arrows-left-right fa-rotate-90"></i>
+                                                <ul style="text-align: left;" class="modal-show-chart">
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Average Viewers</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Follows</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Time Streamed</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Minutes Watched</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Live Views</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <button class="tablinks" onclick="openTab(event, 'tab2')">
+                                        <div class="d-flex align-item-center" style="justify-content: center;">
+                                            <div>
+                                                <div style="color: var(--primary-color-2); font-size: 20px;">0</div>
+                                                <div>Follows</div>
+                                            </div>
+                                            <div style="position: relative; right: -40px;">
+                                                <i onclick="clickModal(1)" style="padding: 6px;"
+                                                    class="fa-solid fa-arrows-left-right fa-rotate-90"></i>
+                                                <ul style="text-align: left;" class="modal-show-chart">
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Average Viewers</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Follows</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Time Streamed</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Minutes Watched</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Live Views</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <button class="tablinks" onclick="openTab(event, 'tab3')">
+                                        <div class="d-flex align-item-center" style="justify-content: center;">
+                                            <div>
+                                                <div style="color: var(--primary-color-2); font-size: 20px;">8m</div>
+                                                <div>Time Streamed</div>
+                                            </div>
+                                            <div style="position: relative; right: -40px;">
+                                                <i onclick="clickModal(2)" style="padding: 6px;"
+                                                    class="fa-solid fa-arrows-left-right fa-rotate-90"></i>
+                                                <ul style="text-align: left;" class="modal-show-chart">
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Average Viewers</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Follows</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Time Streamed</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Minutes Watched</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Live Views</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <button class="tablinks" onclick="openTab(event, 'tab4')">
+                                        <div class="d-flex align-item-center" style="justify-content: center;">
+                                            <div>
+                                                <div style="color: var(--primary-color-2); font-size: 20px;">3.0</div>
+                                                <div>Unique Viewers</div>
+                                            </div>
+                                            <div style="position: relative; right: -40px;">
+                                                <i onclick="clickModal(3)" style="padding: 6px;"
+                                                    class="fa-solid fa-arrows-left-right fa-rotate-90"></i>
+                                                <ul style="text-align: left;" class="modal-show-chart">
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Average Viewers</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Follows</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Time Streamed</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Minutes Watched</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Live Views</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <button class="tablinks" onclick="openTab(event, 'tab5')">
+                                        <div class="d-flex align-item-center" style="justify-content: center;">
+                                            <div>
+                                                <div style="color: var(--primary-color-2); font-size: 20px;">2</div>
+                                                <div>Unique Chartters</div>
+                                            </div>
+                                            <div style="position: relative; right: -40px;">
+                                                <i onclick="clickModal(4)" style="padding: 6px;"
+                                                    class="fa-solid fa-arrows-left-right fa-rotate-90"></i>
+                                                <ul style="text-align: left;" class="modal-show-chart">
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Average Viewers</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Follows</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Time Streamed</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Minutes Watched</span>
+                                                    </li>
+                                                    <li style="padding: 10px;">
+                                                        <span style="text-transform: capitalize; font-size: 10px;"
+                                                            class="ml-10 cs-p">Live Views</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div style="float: right; margin: 20px 0;">
+                                    <select name="" id="">
+                                        <option value="">Day</option>
+                                        <option value="">Week</option>
+                                        <option value="">Month</option>
+                                    </select>
+                                </div>
+
+                                <div id="tab1" class="tabcontent">
+                                    <canvas id="chart1"></canvas>
+                                </div>
+
+                                <div id="tab2" class="tabcontent">
+                                    <canvas id="chart2"></canvas>
+                                </div>
+
+                                <div id="tab3" class="tabcontent">
+                                    <canvas id="chart3"></canvas>
+                                </div>
+
+                                <div id="tab4" class="tabcontent">
+                                    <canvas id="chart4"></canvas>
+                                </div>
+
+                                <div id="tab5" class="tabcontent">
+                                    <canvas id="chart5"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="./assets/js/index.js"></script>
+            <script>
+                // modal show
+                let modalShowChart = document.querySelectorAll("#modalShowChart");
+                function clickModal(i) {
+                    var modal = document.querySelectorAll(".modal-show-chart");
+                    if (modal[i].style.display === "none" || modal[i].style.display === "") {
+                        modal[i].style.display = "block";
+                    } else {
+                        modal[i].style.display = "none";
+                    }
+                }
+
+                function openTab(evt, tabName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(tabName).style.display = "block";
+                    evt.currentTarget.className += " active";
+
+                    if (tabName === "tab1") {
+                        drawChart1();
+                    } else if (tabName === "tab2") {
+                        drawChart2();
+                    } else if (tabName === "tab3") {
+                        drawChart3();
+                    } else if (tabName === "tab4") {
+                        drawChart4();
+                    } else if (tabName === "tab5") {
+                        drawChart5();
+                    }
+                }
+
+                function drawChart1() {
+                    var ctx = document.getElementById("chart1").getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                            labels: ["June", "July", "August", "September"],
+                            datasets: [{
+                                label: "Channel Views",
+                                data: [100, 800, 1200, 1000],
+                                backgroundColor: "rgba(119, 44, 232, 0.5)",
+                                borderColor: "rgba(119, 44, 232, 1)",
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+
+                function drawChart2() {
+                    var ctx = document.getElementById("chart2").getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                            labels: ["June", "July", "August", "September"],
+                            datasets: [{
+                                label: "Subscribers",
+                                data: [200, 300, 400, 1200],
+                                backgroundColor: "rgba(54, 162, 235, 0.5)",
+                                borderColor: "rgba(54, 162, 235, 1)",
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+
+                function drawChart3() {
+                    var ctx = document.getElementById("chart3").getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                            labels: ["June", "July", "August", "September"],
+                            datasets: [{
+                                label: "Watch Time",
+                                data: [800, 1200, 1500, 1000],
+                                backgroundColor: "rgba(75, 192, 192, 0.5)",
+                                borderColor: "rgba(75, 192, 192, 1)",
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+
+                function drawChart4() {
+                    var ctx = document.getElementById("chart4").getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                            labels: ["June", "July", "August", "September"],
+                            datasets: [{
+                                label: "Revenue",
+                                data: [500, 700, 900, 800],
+                                backgroundColor: "rgba(255, 205, 86, 0.5)",
+                                borderColor: "rgba(255, 205, 86, 1)",
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+
+                function drawChart5() {
+                    var ctx = document.getElementById("chart5").getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                            labels: ["June", "July", "August", "September"],
+                            datasets: [{
+                                label: "New Followers",
+                                data: [100, 200, 150, 180],
+                                backgroundColor: "rgba(255, 159, 64, 0.5)",
+                                borderColor: "rgba(255, 159, 64, 1)",
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                }
+
+                document.getElementsByClassName("tablinks")[0].click();
+            </script>
+</body>
+
+</html>

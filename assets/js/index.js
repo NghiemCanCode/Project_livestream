@@ -1,5 +1,5 @@
 const modal = document.querySelector('.js-modal');
-const modalOverlay = document.querySelector('.js-modal__overlay');
+const modalOverlay = document.querySelectorAll('.js-modal__overlay');
 const modalBtnBack = document.querySelectorAll('#js-modal-btn-back');
 
 const btnLogin = document.querySelectorAll('.js-modal-login');
@@ -12,6 +12,13 @@ const authForm = document.querySelectorAll('.js-auth-form');
 function removeForm() {
     modal.style.display = 'none';
 }
+//click Goi dang ky
+let signsubs = document.querySelectorAll("#signsubs")
+signsubs.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = './package_register.html'
+    })
+})
 
 // click login show form
 btnLogin.forEach(e => {
@@ -50,13 +57,23 @@ redirectRegister.forEach(e => {
     })
 })
 
+// forgot password
+let forgotPassword = document.querySelectorAll("#forgotPassword")
+forgotPassword.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = './forgot_password.html'
+    })
+})
+
 // click back remove form
 modalBtnBack.forEach((item) => {
     item.addEventListener('click', removeForm)
 })
 
 // click overlay remove form
-modalOverlay.addEventListener('click', removeForm);
+modalOverlay.forEach(e => {
+    e.addEventListener('click', removeForm);
+})
 
 // for (var i = 0; i < form.length; i++) {
 
@@ -218,6 +235,20 @@ let scheduleChannels = document.querySelectorAll("#scheduleChannels")
 scheduleChannels.forEach(e => {
     e.addEventListener("click", () => {
         location.href = "./channel_schedule.html"
+    })
+})
+
+let creatorDashboard = document.querySelectorAll("#creatorDashboard")
+creatorDashboard.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = "./creator_dashboard.html"
+    })
+})
+
+let backToHome = document.querySelectorAll("#backToHome")
+backToHome.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = "./index.html"
     })
 })
 
@@ -516,7 +547,7 @@ toggleNavChannel2.forEach(e => {
 // channel_2
 let editChannel2 = document.querySelectorAll("#editChannel2")
 let modalChannel2 = document.querySelector("#modalChannel2")
-let closeModal4 = document.querySelector("#closeModal4")
+let closeModal4 = document.querySelectorAll("#closeModal4")
 
 editChannel2.forEach(e => {
     e.addEventListener("click", () => {
@@ -524,8 +555,10 @@ editChannel2.forEach(e => {
     })
 })
 
-closeModal4.addEventListener("click", () => {
-    modalChannel2.style.display = "none"
+closeModal4.forEach(e => {
+    e.addEventListener("click", () => {
+        modalChannel2.style.display = "none"
+    })
 })
 
 // wallet

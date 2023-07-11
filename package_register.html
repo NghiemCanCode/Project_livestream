@@ -185,7 +185,14 @@
                                         <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
                                     </div>
                                 </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
+                                <li id="creatorDashboard" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-clipboard"></i>
+                                        <span style="color: #333;" class="ml-10">Creator
+                                            Dashboard</span>
+                                    </div>
+                                </li>
+                                <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
                                     <div style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <i style="color: #333;" class="fa-regular fa-star"></i>
                                         <span id="packageRegister" style="color: #333;" class="ml-10">Gói đăng ký theo
@@ -334,7 +341,7 @@
                                         <div style="font-weight: 500; font-size: 18px; color: var(--primary-color-2);">
                                             Subscriptions
                                         </div>
-                                        <div onclick="window.location.href = '/package_register_expired.html'"
+                                        <div onclick="window.location.href = './package_register_expired.html'"
                                             style="font-weight: 500; font-size: 18px; color: #333; margin-left: 20px;"
                                             class="cs-p">
                                             Expired Subscriptions
@@ -342,7 +349,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-30">
+                                <!-- <div class="mt-30">
                                     <span>Choose the subscription you want:</span>
                                     <select style="width: 80px;" class="ml-10" name="packageSelect" id="packageSelect">
                                         <option value="1">1 tháng</option>
@@ -350,11 +357,11 @@
                                         <option value="6">6 tháng</option>
                                         <option value="12">1 năm</option>
                                     </select>
-                                </div>
+                                </div> -->
 
-                                <div class="mt-30">
+                                <!-- <div class="mt-30">
                                     <button id="submitModalPackage" class="btn btn--primary">Submit</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

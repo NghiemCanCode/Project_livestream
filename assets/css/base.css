@@ -36,7 +36,7 @@ html {
     /* "Roobert","Inter","Helvetica Neue",Helvetica,Arial,sans-serif; */
 }
 
-/* responsive */
+/* responsive */    
 .grid__row {
     display: flex;
     flex-wrap: wrap;
