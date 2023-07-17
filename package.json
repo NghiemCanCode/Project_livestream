@@ -1,20 +1,13 @@
 {
-  "dependencies": {
-    "aws-sdk": "^2.1415.0",
-    "socket.io": "^4.7.1",
-    "upper-case": "^2.0.2",
-    "uuid": "^9.0.0"
-  },
-  "name": "project_livestream",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  },
+  "dependencies": {},
+  "name": "aws-nodejs-sample",
+  "description": "A simple Node.js application illustrating usage of the SDK for JavaScript.",
+  "version": "1.0.1",
+  "main": "sample.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "author": "NAME",
+  "license": "ISC"
 }
