@@ -64,6 +64,55 @@
             display: none;
             margin-top: 4px;
         }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+        }
+
+        #modal {
+            position: fixed;
+            top: 0;
+            left: -21%;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            padding: 20px;
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #modal.active {
+            transform: translateX(0);
+        }
+
+        #closeModalBtnCreator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .style-li {
+            margin: 0;
+            padding: 10px 0;
+            list-style-type: none;
+            border-bottom: 1px solid #333;
+        }
     </style>
 
 </head>
@@ -75,7 +124,7 @@
             <div class="grid wide">
                 <nav class="navbar hide-on-mb-tl">
                     <ul class="navbar-list">
-                        <div class="header__search" style="display: flex; align-items: center;">
+                        <div id="modalCretor" class="header__search" style="display: flex; align-items: center;">
                             <button class="header__search-btn">
                                 <i style="color: var(--white-color); font-size: 18px;" class="fa-solid fa-bars"></i>
                             </button>
@@ -108,7 +157,7 @@
                                     <div style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <i style="color: #333;" class="fa-solid fa-clipboard"></i>
                                         <span style="color: #333;" class="ml-10">Thống kê doang thu
-                                            </span>
+                                        </span>
                                     </div>
                                 </li>
                                 <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
@@ -354,6 +403,32 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- modal -->
+            <div id="overlay"></div>
+
+            <div id="modal" class="d-none">
+                <div class="d-flex align-items-center">
+                    <span id="closeModalBtnCreator">&times;</span>
+                </div>
+                <div style="padding: 20px 8px;">
+                    <ul>
+                        <li class="style-li">
+                            <div style="font-size: 12px;" class="d-flex align-item-center cs-p">
+                                <i style="color: #333;" class="fa-solid fa-clipboard mr-20"></i>
+                                <span>Thống kê doanh thu</span>
+                            </div>
+                        </li>
+                        <li class="mt-10 style-li">
+                            <div onclick="window.location.href = 'list_follower.html'" style="font-size: 12px;"
+                                class="d-flex align-item-center cs-p">
+                                <i style="color: #333;" class="fa-solid fa-clipboard mr-20"></i>
+                                <span>Danh sách người theo dõi</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
