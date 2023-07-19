@@ -379,11 +379,20 @@
 
                     <div id="streamLive" class="l-7 content-fixed" style="border-right: 1px solid #e2e2e6; margin-left: 239.73px;">
                         <div style="position: relative;">
-                            <img width="100%" height="540px" src="./assets/img/img_live_1.png" alt="">
+                            <script src="https://player.live-video.net/1.20.0/amazon-ivs-player.min.js"></script>
+                            <video id="video-player" playsinline width="98.5%" style="margin-left: 15px;"></video>
+                            <script>
+                            if (IVSPlayer.isPlayerSupported) {
+                                const player = IVSPlayer.create();
+                                player.attachHTMLVideoElement(document.getElementById('video-player'));
+                                player.load("https://416fc24342ee.ap-northeast-2.playback.live-video.net/api/video/v1/ap-northeast-2.529876766707.channel.eyUQA0x3981w.m3u8");
+                                player.play();
+                            }
+                            </script>
                             <div>
-                                <i style="color: #fff; position: absolute; top: 93%; font-size: 18px; left: 18px;"
+                                <i style="color: #fff; position: absolute; top: 93%; font-size: 18px; left: 28px;"
                                     class="fa-solid fa-pause cs-p"></i>
-                                <i id="volumne" style="color: #fff; position: absolute; top: 93%; font-size: 18px; left: 45px;"
+                                <i id="volumne" style="color: #fff; position: absolute; top: 93%; font-size: 18px; left: 55px;"
                                     class="fa-solid fa-volume-high cs-p"></i>
                                 <!-- <i id="mute" style="color: #fff; position: absolute; top: 93%; font-size: 18px; left: 45px;"
                                     class="fa-solid fa-volume-xmark cs-p"></i> -->
