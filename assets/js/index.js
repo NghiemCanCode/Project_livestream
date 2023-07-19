@@ -808,3 +808,68 @@ function showCheckboxes() {
         show = true;
     }
 }
+
+// setting live
+let settingLive = document.querySelectorAll("#settingLive")
+let bodySettingLive = document.querySelectorAll("#bodySettingLive")
+settingLive.forEach(e => {
+    e.addEventListener("click", () => {
+        bodySettingLive.forEach(e => {
+            if (e.style.display === "none" || e.style.display === "") {
+                e.style.display = "block";
+            } else {
+                e.style.display = "none";
+            }
+        })
+    })
+})
+
+// click volume
+let volumne = document.querySelectorAll("#volumne")
+let mute = document.querySelectorAll("#mute")
+let rangeVolume = document.querySelectorAll("#rangeVolume")
+volumne.forEach(e => {
+    e.addEventListener("click", () => {
+        rangeVolume.forEach(e => {
+            if (e.style.display === "none" || e.style.display === "") {
+                e.style.display = "block";
+            } else {
+                e.style.display = "none";
+            }
+        })
+    })
+})
+
+// modal creator_dashboard
+const openModalBtn = document.querySelectorAll("#modalCretor");
+const closeModalBtn = document.querySelectorAll("#closeModalBtnCreator");
+const overlay = document.querySelectorAll("#overlay");
+const modalCreator = document.querySelectorAll("#modal");
+
+openModalBtn.forEach(e => {
+    e.addEventListener("click", function () {
+        openModal();
+    });
+})
+
+closeModalBtn.forEach(e => {
+    e.addEventListener("click", function () {
+        closeModal();
+    });
+})
+
+overlay.forEach(e => {
+    e.addEventListener("click", function () {
+        closeModal();
+    });
+})
+
+function openModal() {
+    overlay.style.display = "block";
+    modalCreator.style.display = "block"
+}
+
+function closeModal() {
+    overlay.style.display = "none";
+    modalCreator.style.display = "none"
+}
