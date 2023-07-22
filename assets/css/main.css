@@ -1689,6 +1689,22 @@
     margin-top: 4px;
 }
 
+  .report-channel-videos {
+    position: absolute;
+    z-index: 1;
+    right: 9px;
+    top: 70%;
+    width: 200px;
+    padding-left: 0;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    list-style: none;
+    box-shadow: 0 1px 5px #333;
+    /* overflow: hidden; */
+    display: none;
+    margin-top: 4px;
+}
+
 .sort-by-menu {
     position: absolute;
     z-index: 1;

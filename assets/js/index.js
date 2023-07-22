@@ -238,6 +238,20 @@ scheduleChannels.forEach(e => {
     })
 })
 
+let channleHomePage = document.querySelectorAll("#channleHomePage")
+channleHomePage.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = "./channel_home_page.html"
+    })
+})
+
+let detailAvtHomePage = document.querySelectorAll("#detailAvtHomePage")
+detailAvtHomePage.forEach(e => {
+    e.addEventListener("click", () => {
+        location.href = "./detail_avt_home_page.html"
+    })
+})
+
 let creatorDashboard = document.querySelectorAll("#creatorDashboard")
 creatorDashboard.forEach(e => {
     e.addEventListener("click", () => {
@@ -342,6 +356,19 @@ reportLives.forEach(e => {
             liveMenu.style.display = "block";
         } else {
             liveMenu.style.display = "none";
+        }
+    });
+})
+
+// toggle click report channel videos
+let openReportChannelVideo = document.querySelectorAll(".openReportChannelVideo")
+openReportChannelVideo.forEach(e => {
+    e.addEventListener("click", function () {
+        const reportChannelVideo = e.nextElementSibling;
+        if (reportChannelVideo.style.display === "none" || reportChannelVideo.style.display === "") {
+            reportChannelVideo.style.display = "block";
+        } else {
+            reportChannelVideo.style.display = "none";
         }
     });
 })
@@ -594,7 +621,7 @@ userProfile.forEach(e => {
 let userChannel = document.querySelectorAll("#userChannel")
 userChannel.forEach(e => {
     e.addEventListener("click", () => {
-        location.href = "./channel.html"
+        location.href = "./channel_home_page.html"
     })
 })
 
@@ -840,6 +867,15 @@ volumne.forEach(e => {
     })
 })
 
+// 
+const currentDate = new Date();
+const dateString = currentDate.toISOString().slice(0, 10);
+
+const dateNow = document.querySelectorAll("#dateNow")
+dateNow.forEach(e => {
+    e.value = dateString
+})
+
 // modal creator_dashboard
 const openModalBtn = document.querySelectorAll("#modalCretor");
 const closeModalBtn = document.querySelectorAll("#closeModalBtnCreator");
@@ -865,11 +901,19 @@ overlay.forEach(e => {
 })
 
 function openModal() {
-    overlay.style.display = "block";
-    modalCreator.style.display = "block"
+    overlay.forEach(e => {
+        e.style.display = "block";
+    })
+    modalCreator.forEach(e => {
+        e.style.display = "block";
+    })
 }
 
 function closeModal() {
-    overlay.style.display = "none";
-    modalCreator.style.display = "none"
+    overlay.forEach(e => {
+        e.style.display = "none";
+    })
+    modalCreator.forEach(e => {
+        e.style.display = "none";
+    })
 }
