@@ -1,10 +1,12 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "@aws-sdk/client-iam": "^3.370.0",
+    "@aws-sdk/client-ivs": "^3.371.0"
+  },
   "name": "aws-nodejs-sample",
   "description": "A simple Node.js application illustrating usage of the SDK for JavaScript.",
   "version": "1.0.1",
   "main": "sample.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
