@@ -16,6 +16,11 @@ const dynamodb = new DynamoDB({REGION, AWS_ACCESS_KEY, AWS_SERRECT_KEY})
 //
 const {CognitoIdentityProviderClient} = require("@aws-sdk/client-cognito-identity-provider")
 
-const cognito_identify = new CognitoIdentityProviderClient({REGION, AWS_ACCESS_KEY, AWS_SERRECT_KEY});
+const cognito_identify_provider = new CognitoIdentityProviderClient({REGION, AWS_ACCESS_KEY, AWS_SERRECT_KEY});
+
 //
-module.exports = {dynamodb, ivs, cognito_identify}
+const {CognitoIdentityClient} = require("@aws-sdk/client-cognito-identity")
+
+const cognito_identify = new CognitoIdentityClient({REGION})
+
+module.exports = {dynamodb, ivs, cognito_identify_provider, cognito_identify}
