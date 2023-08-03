@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header-fixed"
+            style="background-color: #fff; padding-bottom: 5px; border-bottom: 1px solid #dcdcdd;">
+            <div class="grid wide">
+                <nav class="navbar hide-on-mb-tl">
+                    <ul class="navbar-list">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <li>
+                                <a href="index.html">
+                                    <img style="width: 48px; height: 28px; cursor: pointer;"
+                                        src="/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
+                                </a>
+                            </li>
+                            <li id="followingHeader" class="hoverHeader" style="margin-left: 20px; cursor: pointer;">
+                                <h2>Đang theo dõi</h2>
+                            </li>
+                            <li class="hoverHeader" style="margin-left: 30px; cursor: pointer;">
+                                <h2>Duyệt</h2>
+                            </li>
+                        </div>
+                    </ul>
+
+                    <ul class="navbar-list">
+                        <div class="header__search" style="display: flex; align-items: center;">
+                            <div class="header__search-input-wrap">
+                                <input type="text" class="header__search-input" style="border: 1px solid #333;"
+                                    placeholder="Search">
+                            </div>
+                            <button class="header__search-btn">
+                                <i class="header__search-btn-icon fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </ul>
+
+                    <ul class="navbar-list">
+                        <div id="formLoginARegister" style="display: none;">
+                            <li style="color: var(--primary-color-2);"
+                                class="navbar-item navbar-item--bold navbar-item--separate js-modal-register">Đăng ký
+                            </li>
+                            <li style="color: var(--primary-color-2);"
+                                class="navbar-item navbar-item--bold js-modal-login">
+                                Đăng nhập</li>
+                        </div>
+
+                        <div>
+                            <svg id="bitMenu" width="20px" height="20px" version="1.1" viewBox="0 0 20 20" x="0px"
+                                y="0px" aria-hidden="true" focusable="false"
+                                class="ScIconSVG-sc-1q25cff-1 dSicFr mr-5 cs-p">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3 12l7-10 7 10-7 6-7-6zm2.678-.338L10 5.487l4.322 6.173-.85.728L10 11l-3.473 1.39-.849-.729z">
+                                </path>
+                            </svg>
+                            <ul class="bits-menu">
+                                <li class="navbar-user-item">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <span style="text-align: center;" class="w-100">
+                                            <div style="color: #333; font-weight: 550;">Mua Anna</div>
+                                            <div>Bạn có 0 Anna</div>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 10px 0;">
+                                        <div style="color: #333;" class="ml-10">Giá được hiển thị
+                                            VND
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;"
+                                        class="d-flex align-item-center justify-content-between">
+                                        <div>
+                                            <div>
+                                                <span style="font-weight: bolder;">20 Anna</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit1.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit2.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-3">
+                                                <button id="btnFinalBits" class="btn btn--primary">20,000</button>
+                                            </div>
+                                            <!-- <div class="mt-5">
+                                                <span>29% discount</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;"
+                                        class="d-flex align-item-center justify-content-between">
+                                        <div>
+                                            <div>
+                                                <span style="font-weight: bolder;">50 Anna</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit1.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit2.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit3.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit4.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-3">
+                                                <button id="btnFinalBits" class="btn btn--primary">50,000</button>
+                                            </div>
+                                            <!-- <div class="mt-5">
+                                                <span>8% discount</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;"
+                                        class="d-flex align-item-center justify-content-between">
+                                        <div>
+                                            <div>
+                                                <span style="font-weight: bolder;">100 Anna</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit1.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit2.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit3.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit4.png"
+                                                    alt="">
+                                                <img style="width: 25px; height: 25px;" src="/img/bit5.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-3">
+                                                <button id="btnFinalBits" class="btn btn--primary">100,000</button>
+                                            </div>
+                                            <!-- <div class="mt-5">
+                                                <span>8% discount</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <li id="menuAvt" class="navbar-item navbar-user" style="display: block;">
+                            <img src="/img/avt_user.png" alt="avatar" class="navbar-user-avt">
+                            <ul class="navbar-user-menu">
+                                <li class="navbar-user-item">
+                                    <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
+                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                    </div>
+                                </li>
+                                <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-camera"></i>
+                                        <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
+                                    </div>
+                                </li>
+                                <li id="creatorDashboard" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-clipboard"></i>
+                                        <span style="color: #333;" class="ml-10">Thống kê doang thu
+                                        </span>
+                                    </div>
+                                </li>
+                                <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-regular fa-star"></i>
+                                        <span id="packageRegister" style="color: #333;" class="ml-10">Gói đăng ký theo
+                                            dõi</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-wallet"></i>
+                                        <span id="twitchWallet" style="color: #333;" class="ml-10">Ví Anna</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-gear"></i>
+                                        <span id="setting" style="color: #333;" class="ml-10">Cài đặt</span>
+                                    </div>
+                                </li>
+                                <li class="navbar-user-item navbar-user-item--separate">
+                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="app__container">
+            <div class="grid wide">
+                <div class="row sm-gutters app__content">
+                    <div id="layout2_10" class="col l-2 nav-fixed">
+                        <div style="height: 100%; position: sticky;" class="category">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: 0 16px 0 0;">
+                                <h3 class="category__heading">
+                                    Dành cho bạn
+                                </h3>
+                                <i id="toggleLayout2_10" class="fa-solid fa-arrow-left-long cs-p"></i>
+                            </div>
+
+                            <div style="display: flex; align-items: center; justify-content: space-between;"
+                                class="category-list-2">
+                                <p style="color: #89898b;">Kênh đã theo dõi</p>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+
+                            <div class="category-list-2"
+                                style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                    <p style="margin-left: 10px;">IsurugiAyami</p>
+                                </div>
+                                <p>Offline</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- menu click -->
+                    <div style="display: none;" id="navFixedLayout2_10" class="l-1 nav-toggle">
+                        <div style=" height: 100%; margin-left: 2px;" class="category" data-condition="minimized">
+                            <div class="p-16" style="text-align: center; font-size: 18px;">
+                                <i id="toggleLayout2_10Back" class="fa-solid fa-arrow-right cs-p"></i>
+                            </div>
+                            <div class="category-list-2">
+                                <div>
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                </div>
+                            </div>
+                            <div class="category-list-2 mt-20">
+                                <div>
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                </div>
+                            </div>
+                            <div class="category-list-2">
+                                <div>
+                                    <img src="/img/img_cat1.png"
+                                        style="width: 30px; height: 30px; border-radius: 9000px;" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="contentLayout2_10" class="col l-10 content-fixed pb-250">
+                        <div class="mt-30">
+                            <div style="padding: 0 16px 0 16px;">
+                                <div class="d-flex justify-content-between">
+                                    <div style="display: flex; margin-top: 8px;">
+                                        <div>
+                                            <img onClick="window.location.href = 'channel_2.html'"
+                                                src="/img/avt_user.png" class="cs-p"
+                                                style="width: 65px; height: 65px; border-radius: 9000px; border: 3px solid #53535f; padding: 2px;"
+                                                alt="">
+                                        </div>
+                                        <div class="ml-5 mt-10" style="width: 100%;">
+                                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                                <h1 class="ml-5 mb-5" style="font-weight: bolder;">user123
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="d-flex">
+                                            <div class="d-flex">
+                                                <i style="margin-right: 8px; font-size: 16px; margin-top: 10px;"
+                                                    class="fa-solid fa-ellipsis-vertical cs-p"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex mt-30 justify-content-between">
+                                    <div class="d-flex align-item-center">
+                                        <div id="channleHomePage"
+                                            style="font-weight: 500; font-size: 18px; color: #333;" class="cs-p">
+                                            Trang chủ
+                                        </div>
+                                        <div onclick="window.location.href = './channel.html'" class="cs-p"
+                                            style="font-weight: 500; font-size: 18px; margin-left: 20px;">
+                                            Giới Thiệu
+                                        </div>
+                                        <div id="scheduleChannels"
+                                            style="font-weight: 500; font-size: 18px; color: #333; margin-left: 20px;"
+                                            class="cs-p">
+                                            Lịch
+                                        </div>
+                                        <div style="font-weight: 500; font-size: 18px; color: #333; margin-left: 20px; color: var(--primary-color-2);"
+                                            class="cs-p">
+                                            Videos
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input style="font-size: 12px; padding: 5px; width: 300px;" type="text"
+                                            placeholder="Nhập vào để tìm kiếm hoặc thêm danh mục">
+                                    </div>
+                                </div>
+
+                                <div class="row sm-gutters mt-30">
+                                    <div class="col l-3">
+                                        <a class="home-product-item">
+                                            <img style="width: 100%; height: 170px; position: relative;"
+                                                class="img-live-style" src="/img/img_live_1.png" alt="">
+
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <img src="/img/img_live_1.png" class="style-img-live" alt="">
+                                                <div class="ml-5" style="width: 100%;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; width: 100%;">
+                                                        <span class="restyle-p ml-5 header__cart-item-name"
+                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA KALLA
+                                                        </span>
+                                                        <i style="margin-right: 8px;"
+                                                            class="fa-solid fa-ellipsis-vertical cs-p openReportChannelVideo">
+                                                        </i>
+                                                        <ul id="reportChannelVideo"
+                                                            class="report-channel-videos d-none">
+                                                            <li style="padding: 10px;">
+                                                                <span
+                                                                    style="text-transform: capitalize; font-size: 10px;"
+                                                                    class="ml-10 cs-p">Ẩn Video</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
+                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                </div>
+                                            </div>
+
+                                            <div style="background-color: #1e1610;"
+                                                class="home-product-item__favourite">
+                                                <span>3:32:42</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 105px; top: -116px; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>512k người xem</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 82px; top: -132px; left: -8px; float: right; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>4 giờ trước</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col l-3">
+                                        <a class="home-product-item">
+                                            <img style="width: 100%; height: 170px; position: relative;"
+                                                class="img-live-style" src="/img/img_live_1.png" alt="">
+
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <img src="/img/img_live_1.png" class="style-img-live" alt="">
+                                                <div class="ml-5" style="width: 100%;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; width: 100%;">
+                                                        <span class="restyle-p ml-5 header__cart-item-name"
+                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA KALLA
+                                                        </span>
+                                                        <i style="margin-right: 8px;"
+                                                            class="fa-solid fa-ellipsis-vertical cs-p openReportChannelVideo">
+                                                        </i>
+                                                        <ul id="reportChannelVideo"
+                                                            class="report-channel-videos d-none">
+                                                            <li style="padding: 10px;">
+                                                                <span
+                                                                    style="text-transform: capitalize; font-size: 10px;"
+                                                                    class="ml-10 cs-p">Ẩn Video</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
+                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                </div>
+                                            </div>
+
+                                            <div style="background-color: #1e1610;"
+                                                class="home-product-item__favourite">
+                                                <span>3:32:42</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 105px; top: -116px; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>512k người xem</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 82px; top: -132px; left: -8px; float: right; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>4 giờ trước</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col l-3">
+                                        <a class="home-product-item">
+                                            <img style="width: 100%; height: 170px; position: relative;"
+                                                class="img-live-style" src="/img/img_live_1.png" alt="">
+
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <img src="/img/img_live_1.png" class="style-img-live" alt="">
+                                                <div class="ml-5" style="width: 100%;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; width: 100%;">
+                                                        <span class="restyle-p ml-5 header__cart-item-name"
+                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA KALLA
+                                                        </span>
+                                                        <i style="margin-right: 8px;"
+                                                            class="fa-solid fa-ellipsis-vertical cs-p openReportChannelVideo">
+                                                        </i>
+                                                        <ul id="reportChannelVideo"
+                                                            class="report-channel-videos d-none">
+                                                            <li style="padding: 10px;">
+                                                                <span
+                                                                    style="text-transform: capitalize; font-size: 10px;"
+                                                                    class="ml-10 cs-p">Ẩn Video</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
+                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                </div>
+                                            </div>
+
+                                            <div style="background-color: #1e1610;"
+                                                class="home-product-item__favourite">
+                                                <span>3:32:42</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 105px; top: -116px; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>512k người xem</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 82px; top: -132px; left: -8px; float: right; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>4 giờ trước</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col l-3">
+                                        <a class="home-product-item">
+                                            <img style="width: 100%; height: 170px; position: relative;"
+                                                class="img-live-style" src="/img/img_live_1.png" alt="">
+
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <img src="/img/img_live_1.png" class="style-img-live" alt="">
+                                                <div class="ml-5" style="width: 100%;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; width: 100%;">
+                                                        <span class="restyle-p ml-5 header__cart-item-name"
+                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA KALLA
+                                                        </span>
+                                                        <i style="margin-right: 8px;"
+                                                            class="fa-solid fa-ellipsis-vertical cs-p openReportChannelVideo">
+                                                        </i>
+                                                        <ul id="reportChannelVideo"
+                                                            class="report-channel-videos d-none">
+                                                            <li style="padding: 10px;">
+                                                                <span
+                                                                    style="text-transform: capitalize; font-size: 10px;"
+                                                                    class="ml-10 cs-p">Ẩn Video</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
+                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                </div>
+                                            </div>
+
+                                            <div style="background-color: #1e1610;"
+                                                class="home-product-item__favourite">
+                                                <span>3:32:42</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 105px; top: -116px; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>512k người xem</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 82px; top: -132px; left: -8px; float: right; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>4 giờ trước</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col l-3">
+                                        <a class="home-product-item">
+                                            <img style="width: 100%; height: 170px; position: relative;"
+                                                class="img-live-style" src="/img/img_live_1.png" alt="">
+
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <img src="/img/img_live_1.png" class="style-img-live" alt="">
+                                                <div class="ml-5" style="width: 100%;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; width: 100%;">
+                                                        <span class="restyle-p ml-5 header__cart-item-name"
+                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA KALLA
+                                                        </span>
+                                                        <i style="margin-right: 8px;"
+                                                            class="fa-solid fa-ellipsis-vertical cs-p openReportChannelVideo">
+                                                        </i>
+                                                        <ul id="reportChannelVideo"
+                                                            class="report-channel-videos d-none">
+                                                            <li style="padding: 10px;">
+                                                                <span
+                                                                    style="text-transform: capitalize; font-size: 10px;"
+                                                                    class="ml-10 cs-p">Ẩn Video</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
+                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                </div>
+                                            </div>
+
+                                            <div style="background-color: #1e1610;"
+                                                class="home-product-item__favourite">
+                                                <span>3:32:42</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 105px; top: -116px; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>512k người xem</span>
+                                            </div>
+
+                                            <div style="background-color: #1e1610; width: 82px; top: -132px; left: -8px; float: right; position: relative;"
+                                                class="home-product-item__favourite">
+                                                <span>4 giờ trước</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal layout -->
+            <div class="modal js-modal">
+                <div class="modal__overlay js-modal__overlay"></div>
+
+                <div class="modal__body js-modal__body">
+                    <!-- Form regitser -->
+                    <div class="auth-form js-auth-form">
+                        <div class="auth-form__container">
+                            <div class="auth-form__header">
+                                <h3 class="auth-form__heading">Đăng ký</h3>
+                                <span id="redirectLogin" class="auth-form__switch-btn">Đăng nhập</span>
+                            </div>
+
+                            <div class="auth-form__form">
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Enter name">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Enter email">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password again">
+                                </div>
+                            </div>
+
+                            <div class="auth-form__aside">
+                                <p class="auth-form__policy-text">
+                                    Bạn đồng ý với Anna về
+                                    <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                                    <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                                </p>
+                            </div>
+
+                            <div class="auth-form__controls">
+                                <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">Trở
+                                    lại</button>
+                                <button class="btn btn--primary">Đăng ký</button>
+                            </div>
+                        </div>
+
+                        <!-- <div class="auth-form__socials">
+                                <a href="" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-facebook-square"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Facebook
+                                    </span>
+                                </a>
+                                <a href="" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Google
+                                    </span>
+                                </a>
+                            </div> -->
+                    </div>
+
+                    <!-- Form login -->
+                    <div class="auth-form js-auth-form">
+                        <div class="auth-form__container">
+                            <div class="auth-form__header">
+                                <h3 class="auth-form__heading">Đăng nhập</h3>
+                                <span id="redirectRegister" class="auth-form__switch-btn">Đăng ký</span>
+                            </div>
+
+                            <div class="auth-form__form">
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Enter email">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password">
+                                </div>
+                            </div>
+
+                            <div class="auth-form__aside">
+                                <div class="auth-form__help">
+                                    <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                                    <span class="auth-form__help-separate"></span>
+                                    <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                                </div>
+                            </div>
+
+                            <div class="auth-form__controls">
+                                <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">TRỞ
+                                    LẠI</button>
+                                <button id="login" class="btn btn--primary">ĐĂNG NHẬP</button>
+                            </div>
+                        </div>
+                        <!-- 
+                            <div class="auth-form__socials">
+                                <a href="" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-facebook-square"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Facebook
+                                    </span>
+                                </a>
+                                <a href="" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+                                    <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                                    <span class="auth-form__socials-title">
+                                        Kết nối vs Google
+                                    </span>
+                                </a>
+                            </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="modalBits" class="modal-package-register">
+                <div class="modal-content-package-register content-fixed">
+                    <span id="closeModal4" class="modal-close-package-register">&times;</span>
+                    <h1>Hoàn tất mua hàng</h1>
+                    <p>Tóm tắt mua hàng</p>
+                    <div class="d-flex justify-content-between align-item-center">
+                        <div class="d-flex">
+                            <img style="width: 30px; height: 30px;" src="/img/bit2.png" alt="">
+                            <div class="ml-5">
+                                <h3 style="margin: 0;">300 Anna </h3>
+                                <div>Mua 1 lần vào 26/6/2023</div>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div>Số lượng</div>
+                            <div>
+                                <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <div class="d-flex justify-content-between">
+                            <!-- <span>Bạn có Anna Gift Card không ? <span style="color: var(--primary-color-2);">Hãy
+                                        quy đổi ngay</span> </span> -->
+                            <div class="d-flex">
+                                <span style="font-weight: 550;">Tổng cộng đã bao gồm VAT
+                                </span>
+                                <span class="ml-5">300,000 VND</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h2>Thanh toán bằng</h2>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">
+                                Paypal</button>
+                            <button class="btn" style="width: 48%; background-color: #89898b;">Trở lại
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="/js/index.js"></script>
+</body>
+
+</html>
