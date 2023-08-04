@@ -10,6 +10,9 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
   'client_id': 'ARk2l4AWLC7Inhr9_Bz9Bf1N3Knkk58dENlciE9z52_IQP7fZ4q4U-V4RelWnNX8DAnMBXvBi1Mlf_TR',

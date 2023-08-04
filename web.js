@@ -29,6 +29,8 @@ const initWebRoute = (app) => {
     router.get("/wallet", WalletController.getWallet)
     router.get("/historySubcriber", WalletController.getPaymentHistory)
     router.get("/historyPurchase", WalletController.getAnnaHistory)
+    router.post("/createNewUser",AccountController.createNewUser)
+    router.post("/Login", AccountController.login)    
     return app.use('/', router);
 }
 
