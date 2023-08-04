@@ -1,10 +1,10 @@
-const {ivs} = require("./libs/sampleClient.js");
+const {ivs, s3} = require("./libs/sampleClient.js");
 
 // Hàm lấy channel
 
 const {GetChannelCommand} = require("@aws-sdk/client-ivs");
 
-const getChannel = async (arn) => {
+const GetChannel = async (arn) => {
     try {
         const data = await ivs.send(new GetChannelCommand({
             arn: arn
@@ -19,7 +19,7 @@ const getChannel = async (arn) => {
 // Hàm tạo channel
 const {CreateChannelCommand } = require("@aws-sdk/client-ivs"); 
 
-const createChannel = async (name) =>{
+const CreateChannel = async (name) =>{
     try{
         const data = await ivs.send(new CreateChannelCommand({
             name: name,
@@ -36,7 +36,7 @@ const createChannel = async (name) =>{
 // Hàm lấy danh sách channel
 const {ListStreamsCommand} = require("@aws-sdk/client-ivs");
 
-const getStreamList = async (health, maxResults) => {
+const GetStreamList = async (health, maxResults) => {
     try{
         const data = await ivs.send(new ListStreamsCommand({
             filterBy: {
@@ -56,13 +56,13 @@ const {dynamodb} = require("./libs/sampleClient.js");
 
 const {GetItemCommand} = require("@aws-sdk/client-dynamodb")
 
-const getHoSoNguoiDung = async() =>{
+const GetHoSoNguoiDung = async(Key) =>{
     try{
         const data = await dynamodb.send(new GetItemCommand(
             {
                 "Key":{
                     "TenDangNhap": {
-                        "S": "NghiemStreamer"
+                        "S": Key
                     }
                 },
                 "TableName":"HoSoNguoiDung"
@@ -76,6 +76,137 @@ const getHoSoNguoiDung = async() =>{
     }
 };
 //
+
+const {PutItemCommand} = require("@aws-sdk/client-dynamodb")
+
+const CreateHoSoNguoiDung = async() =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand(
+            {
+                "Item":{
+                    "TenDangNhap":{
+                        "S":"NghiemHacker"
+                    },
+                    "AnhBiaARN":{
+                        "S":"meme.jpg"
+                    },
+                    "AnhDaiDienARN":{
+                        "S":"meme.jpg"
+                    },
+                    "DangKi":{
+                        "L":[
+                            {
+                                "M":{
+                                    "GoiDangKi":{
+                                        "S":"1T"
+                                    },
+                                    "NgayHetHan":{
+                                        "S":"1-1-2024"
+                                    },
+                                    "StreamARN":{
+                                        "S":"sdk"
+                                    },
+                                    "Streamer":{
+                                        "S":"Cường 7Núi"
+                                    },
+                                    "ThoiGianDangKi":{
+                                        "S":"8-3-2023"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "DanhSachTheoDoi":{
+                        "L": [
+                            {
+                                "M":{
+                                    "NgayTheoDoi":{
+                                        "S":"20-11-2012"
+                                    },
+                                    "StreamARN":{
+                                        "S":"dsd"
+                                    },
+                                    "TenDangNhapStreamer":{
+                                        "S":"Cường 7Núi"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "GioiThieu":{
+                        "S":"Bo may pro"
+                    },
+                    "Gmail":{
+                        "S":"nghiemlee493@gmail.com"
+                    },
+                    "Link":{
+                        "L":[
+                            {
+                                "M":{
+                                    "Link":{
+                                        "S":"facebook.com/luis.sofm"
+                                    },
+                                    "SoTT":{
+                                        "N":"0"
+                                    },
+                                    "TenLink":{
+                                        "S":"Sofm"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "SoNguoiDangKy":{
+                        "N":"0"
+                    },
+                    "SoNguoiTheoDoi":{
+                        "N":"0"
+                    },
+                    "TenKenh":{
+                        "S":"Nghiem_ProVCL"
+                    },
+                    "TheLoaiMau":{
+                        "S":"JustChatting"
+                    },
+                    "Tien":{
+                        "N":"0"
+                    },
+                    "TieuDeMacDinh":{
+                        "S":"Day la Kenh Tau Hai"
+                    },
+                    "TrangThai":{
+                        "B":"True"
+                    }
+                },
+                "ReturnConsumedCapacity":"Total",
+                "TableName":"HoSoNguoiDung"
+            
+        ));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+const {UpdateItemCommand} = require("@aws-sdk/client-dynamodb")
+
+const UpdateHoSoNguoiDung = async() =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand(
+            {
+            }
+        ));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
 const {cognito_identify_provider} = require("./libs/sampleClient.js");
 
 const UserPoolId ='ap-northeast-2_F5v6yidbd'
@@ -83,9 +214,7 @@ const ClientId = "6lhm3fo132s56tfs9k4s7fc38h"
 
 const TenDangNhap = "nghiemsp123"
 const MatKhau = "AlanTuring49"
-
-//const AccessToken = 'eyJraWQiOiJ3c3FOa3NPVU9QNTZNUUVsdXFcL1lIMlR2WXRuQnF0ZitcL1ZkQmxHdTZMMmM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJlMGMzMDdlNi0xZDJmLTRjMzYtOTRkMy04MWRkMjc4NTM3NGIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtbm9ydGhlYXN0LTIuYW1hem9uYXdzLmNvbVwvYXAtbm9ydGhlYXN0LTJfRjV2NnlpZGJkIiwiY2xpZW50X2lkIjoiNmxobTNmbzEzMnM1NnRmczlrNHM3ZmMzOGgiLCJvcmlnaW5fanRpIjoiZTdjNmQ1OTUtN2U1ZC00N2IzLWE4OTQtMTY3OWViNGI3MGM1IiwiZXZlbnRfaWQiOiJkZjVmNTI1Yy04NDAzLTRjMDktOGQwYy1kOWJiYzdhYmYzZjAiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNjkwNzA5MTAxLCJleHAiOjE2OTA3MTI3MDEsImlhdCI6MTY5MDcwOTEwMSwianRpIjoiZTk0ZjEwZDQtMTdlYS00ZGI2LWIyOWQtNTUxMmE4Nzg5YTJhIiwidXNlcm5hbWUiOiJuZ2hpZW1zcDEyMyJ9.yOOv2aqa9chNVKaPEL92WrxAypEonRFHZqJTxvn0m9hZKkSBh1jcWUYVmYrU_RcK7TmXl4pXNNuYRDVjNaRsiMEdGk1_2lbmVknKiSlpv1EAkJOFZE-kxIApH3r6B_k4HFAehyWYd7u9duzvEY32WvDnrKIk9ihEyLwi6S3oTK5Q5f4iY6ifbprNniBQw0OBHYk4aCu1VPs6Cv92kqrwOwnu57nuA184vYav4STXB4yMSTakymeCIdSG2Iu_PQykHgoQXLN1vcGUzKzbO609_zboYVvk46me0HVL5FLjI7ea1FKlyJJFFthn3r6MWhKvcwWr53mqNsvNO_Bpnpekfw'
-// const {GetItemCommand} = require("@aws-sdk/client-dynamodb")
+// Đăng ký
 const {SignUpCommand} = require("@aws-sdk/client-cognito-identity-provider")
 
 const SignUp = async(Username, Password, email, birthdate, name) => {
@@ -118,7 +247,21 @@ const SignUp = async(Username, Password, email, birthdate, name) => {
         console.log(err)
     }
 };
+//Sign Out
 
+const {GlobalSignOutCommand} = require("@aws-sdk/client-cognito-identity-provider")
+
+const SignOut = async (AccessToken) => {
+    try{
+        const data = await cognito_identify_provider.send(new GlobalSignOutCommand({
+            AccessToken: AccessToken
+        }));
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
 //SignUp(TenDangNhap, MatKhau, "nghiemgankteam@gmail.com", "04-09-2003", "NghiemVipProPlayer")
 
 const {ConfirmSignUpCommand} = require("@aws-sdk/client-cognito-identity-provider")
@@ -222,11 +365,75 @@ const GetId = async(IdToken) => {
     }
 }
 
-const TestDangNhap = async() => {
-    var a = await Login(TenDangNhap, MatKhau)
+const {PutObjectCommand} = require("@aws-sdk/client-s3")
 
-    var b = await GetId(a)
-    GetCredentialsForIdentity(b, a)
-
+const UploadImageToS3 = async() =>{
+    try{
+        const data = await s3.send(new PutObjectCommand({
+            Body:"FB_IMG_1584438546061.jpg",
+            Bucket:"projectlivestreamdb",
+            Key:"Meme.jpg"
+        }));
+        console.log("Success")
+        console.log(data)       
+    }
+    catch (err){
+        console.log("Error")
+        console.log(err)
+    }
 }
 
+const CreateTheLoaiGame = async(TenGame, HinhARN) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ID TL":{
+                    "S": "1" 
+                },
+                "TenGame":{
+                    "S": TenGame
+                },
+                "HinhARN":{
+                    "S": HinhARN
+                }
+            },
+            TableName:"TheLoaiGame"
+        }));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+
+const UpdateTheLoaiGame = async() =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID TL":{
+                    "S": "1"
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"TenGame"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":"Dota 3"
+                }
+            },
+            UpdateExpression:"SET #A = :a",
+            TableName:"TheLoaiGame",
+        }));
+        console.log("Success"),
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+
+UpdateTheLoaiGame()
