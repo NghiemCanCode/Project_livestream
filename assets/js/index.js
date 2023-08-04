@@ -48,6 +48,29 @@ redirectLogin.forEach(e => {
     })
 })
 
+//modal xác nhận sign in
+let register = document.querySelectorAll("#register")
+let modalConfirmRegister = document.querySelectorAll("#modalConfirmRegister")
+let closeModalConfirmRegister = document.querySelectorAll("#closeModalConfirmRegister")
+register.forEach(e => {
+    e.addEventListener("click", () => {
+        modalConfirmRegister.forEach(e => {
+            e.style.display = 'block'
+        })
+        authForm[0].style.display = 'none';
+    })
+})
+
+closeModalConfirmRegister.forEach(e => {
+    e.addEventListener("click", () => {
+        modalConfirmRegister.forEach(e => {
+            e.style.display = 'none'
+        })
+        modal.style.display = 'none';
+    })
+})
+
+
 let redirectRegister = document.querySelectorAll("#redirectRegister")
 redirectRegister.forEach(e => {
     e.addEventListener("click", () => {
