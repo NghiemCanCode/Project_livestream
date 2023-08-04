@@ -180,7 +180,7 @@ const CreateHoSoNguoiDung = async() =>{
                 },
                 "ReturnConsumedCapacity":"Total",
                 "TableName":"HoSoNguoiDung"
-            
+            }
         ));
         console.log("Success")
         console.log(data)
@@ -436,4 +436,8 @@ const UpdateTheLoaiGame = async() =>{
     }
 }
 
-UpdateTheLoaiGame()
+module.exports = {GetChannel, CreateChannel, SignOut,
+     GetStreamList, GetHoSoNguoiDung, CreateHoSoNguoiDung, 
+     UpdateHoSoNguoiDung, SignUp, ConfirmSignUp,
+     Login, ChangePassword, GetCredentialsForIdentity,
+     GetId, UploadImageToS3, CreateTheLoaiGame, UpdateTheLoaiGame}
