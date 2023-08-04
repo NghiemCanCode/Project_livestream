@@ -296,8 +296,8 @@ const Login = async(UserName, Password) => {
             ClientId: ClientId
         }));
         console.log('Success');
-        //console.log(data);
-        return data.AuthenticationResult.IdToken
+        console.log(data);
+        return data.AuthenticationResult
     }catch (err){
         console.log("Error");
         console.log(err)
@@ -441,3 +441,4 @@ module.exports = {GetChannel, CreateChannel, SignOut,
      UpdateHoSoNguoiDung, SignUp, ConfirmSignUp,
      Login, ChangePassword, GetCredentialsForIdentity,
      GetId, UploadImageToS3, CreateTheLoaiGame, UpdateTheLoaiGame}
+
