@@ -30,7 +30,8 @@ const initWebRoute = (app) => {
     router.get("/historySubcriber", WalletController.getPaymentHistory)
     router.get("/historyPurchase", WalletController.getAnnaHistory)
     router.post("/createNewUser",AccountController.createNewUser)
-    router.post("/Login", AccountController.login)    
+    router.post("/Login", AccountController.Login)    
+    router.get('/setCookie', AccountController.setCookie)
     return app.use('/', router);
 }
 

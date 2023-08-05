@@ -1,15 +1,16 @@
 import { error } from 'console';
 import configViewEngine from './view_engine';
 import initWebRoute from './web';
+const cookieParser=require('cookie-parser');
 const ejs = require('ejs')
 const express = require('express');
-
+const {check, validationResult}= require('express-validator')
 const paypal = require('paypal-rest-sdk');
 
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-
+app.use(cookieParser());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -90,7 +91,10 @@ app.get('/success', (req, res) => {
 });
 
 app.get('/cancel', (req, res) => res.send('Cancelled'));
-
+app.post('/set', (req,res)=>{
+  res.cookie('fog','bar')
+  res.send("hleoo")
+} )
 
 server.listen(3000, () => {
   console.log('listening on port 3000')
