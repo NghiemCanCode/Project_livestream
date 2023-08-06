@@ -1,21 +1,55 @@
 const {ivs, s3} = require("./libs/sampleClient.js");
-
+const server = "rtmps://416fc24342ee.global-contribute.live-video.net:443/app/"
 // Hàm lấy channel
 
-const {GetChannelCommand} = require("@aws-sdk/client-ivs");
+const {GetChannelCommand, StreamHealth} = require("@aws-sdk/client-ivs");
 
 const GetChannel = async (arn) => {
     try {
         const data = await ivs.send(new GetChannelCommand({
             arn: arn
         }));
-        console.log("Success", data.channel.playbackUrl);
+        console.log("Success");
+        console.log(data)
         return data;
     } catch (err){
         console.log("Error",err);
     }
 };
 
+// Lấy channel
+
+const {GetStreamKeyCommand} = require("@aws-sdk/client-ivs");
+
+const GetStreamKey = async(arn) =>{
+    try{
+        const data = await ivs.send(new GetStreamKeyCommand({
+            arn:arn
+        }));
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+// Tìm Channel bằng tên
+const {ListChannelsCommand} = require("@aws-sdk/client-ivs"); 
+
+const GetChannelByName = async(TenDangNhap) =>{
+    try{
+        const data = await ivs.send(new ListChannelsCommand({
+            filterByName:TenDangNhap
+        }));
+        console.log("Sucess")
+        console.log(data)
+        return data
+    } catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
 // Hàm tạo channel
 const {CreateChannelCommand } = require("@aws-sdk/client-ivs"); 
 
@@ -24,7 +58,8 @@ const CreateChannel = async (name) =>{
         const data = await ivs.send(new CreateChannelCommand({
             name: name,
             type: "ADVANCED_SD",
-            preset: "CONSTRAINED_BANDWIDTH_DELIVERY"
+            preset: "CONSTRAINED_BANDWIDTH_DELIVERY",
+            recordingConfigurationArn:"arn:aws:ivs:ap-northeast-2:529876766707:recording-configuration/Lm0KLNiBHvxx"
         }));
         console.log("Success")
         console.log(data)
@@ -55,7 +90,11 @@ const GetStreamList = async (health, maxResults) => {
 const {dynamodb} = require("./libs/sampleClient.js");
 
 const {GetItemCommand} = require("@aws-sdk/client-dynamodb")
-
+const {PutItemCommand} = require("@aws-sdk/client-dynamodb")
+const {UpdateItemCommand} = require("@aws-sdk/client-dynamodb")
+const {DeleteItemCommand} = require("@aws-sdk/client-dynamodb")
+//CRUD HoSoNguoiDung
+//
 const GetHoSoNguoiDung = async(Key) =>{
     try{
         const data = await dynamodb.send(new GetItemCommand(
@@ -76,132 +115,558 @@ const GetHoSoNguoiDung = async(Key) =>{
     }
 };
 //
-
-const {PutItemCommand} = require("@aws-sdk/client-dynamodb")
-
-const CreateHoSoNguoiDung = async() =>{
+const CreateHoSoNguoiDung = async(TenDangNhap, Gmail) =>{
     try{
         const data = await dynamodb.send(new PutItemCommand(
             {
                 "Item":{
                     "TenDangNhap":{
-                        "S":"NghiemHacker"
-                    },
-                    "AnhBiaARN":{
-                        "S":"meme.jpg"
-                    },
-                    "AnhDaiDienARN":{
-                        "S":"meme.jpg"
-                    },
-                    "DangKi":{
-                        "L":[
-                            {
-                                "M":{
-                                    "GoiDangKi":{
-                                        "S":"1T"
-                                    },
-                                    "NgayHetHan":{
-                                        "S":"1-1-2024"
-                                    },
-                                    "StreamARN":{
-                                        "S":"sdk"
-                                    },
-                                    "Streamer":{
-                                        "S":"Cường 7Núi"
-                                    },
-                                    "ThoiGianDangKi":{
-                                        "S":"8-3-2023"
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    "DanhSachTheoDoi":{
-                        "L": [
-                            {
-                                "M":{
-                                    "NgayTheoDoi":{
-                                        "S":"20-11-2012"
-                                    },
-                                    "StreamARN":{
-                                        "S":"dsd"
-                                    },
-                                    "TenDangNhapStreamer":{
-                                        "S":"Cường 7Núi"
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    "GioiThieu":{
-                        "S":"Bo may pro"
+                        "S":TenDangNhap
                     },
                     "Gmail":{
-                        "S":"nghiemlee493@gmail.com"
-                    },
-                    "Link":{
-                        "L":[
-                            {
-                                "M":{
-                                    "Link":{
-                                        "S":"facebook.com/luis.sofm"
-                                    },
-                                    "SoTT":{
-                                        "N":"0"
-                                    },
-                                    "TenLink":{
-                                        "S":"Sofm"
-                                    }
-                                }
-                            }
-                        ]
-                    },
-                    "SoNguoiDangKy":{
-                        "N":"0"
-                    },
-                    "SoNguoiTheoDoi":{
-                        "N":"0"
-                    },
-                    "TenKenh":{
-                        "S":"Nghiem_ProVCL"
-                    },
-                    "TheLoaiMau":{
-                        "S":"JustChatting"
-                    },
-                    "Tien":{
-                        "N":"0"
-                    },
-                    "TieuDeMacDinh":{
-                        "S":"Day la Kenh Tau Hai"
-                    },
-                    "TrangThai":{
-                        "B":"True"
+                        "S":Gmail
                     }
                 },
-                "ReturnConsumedCapacity":"Total",
-                "TableName":"HoSoNguoiDung"
+                "TableName":"HoSoNguoiDung", 
+                "ConditionExpression":"attribute_not_exists(#TenDangNhap)",
+                "ExpressionAttributeNames":{
+                    "#TenDangNhap":"TenDangNhap"
+                }
             }
         ));
+
+        const data_2 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"AnhBiaARN",
+                "#B":"AnhDaiDienARN"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":"-1"
+                },
+                ":b":{
+                    "S":"-1"
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+            
+        }));
+        const data_3 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"DangKi",
+                "#B":"DanhSachTheoDoi"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "L":[]
+                },
+                ":b":{
+                    "L":[]
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_4 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"GioiThieu",
+                "#B":"Link"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":"-1"
+                },
+                ":b":{
+                    "L":[]
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_5 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"SoNguoiDangKi",
+                "#B":"SoNguoiTheoDoi"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":"0"
+                },
+                ":b":{
+                    "N":"0"
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_6 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"TenKenh",
+                "#B":"TheLoaiMau"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":TenDangNhap
+                },
+                ":b":{
+                    "S":"-1"
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_7 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"Tien",
+                "#B":"TieuDeMacDinh"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":"0"
+                },
+                ":b":{
+                    "S":"-1"
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_8 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"TrangThai"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "B":"True"
+                }
+            },
+            UpdateExpression:"SET #A= :a",
+            TableName:"HoSoNguoiDung"
+        }));
         console.log("Success")
-        console.log(data)
     }catch(err){
         console.log("Error")
         console.log(err)
     }
 }
 //
-const {UpdateItemCommand} = require("@aws-sdk/client-dynamodb")
-
-const UpdateHoSoNguoiDung = async() =>{
+const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN, AnhDaiDienARN, DangKi, DanhSachTheoDoi, GioiThieu, Gmail, 
+    Link, SoNguoiDangKi, SoNguoiTheoDoi, TenKenh, TheLoaiMau, Tien, TieuDeMacDinh, TrangThai) =>{
     try{
-        const data = await dynamodb.send(new UpdateItemCommand(
+        const data_2 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"AnhBiaARN",
+                "#B":"AnhDaiDienARN"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":AnhBiaARN
+                },
+                ":b":{
+                    "S":AnhDaiDienARN
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+            
+        }));
+        const data_3 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"DangKi",
+                "#B":"DanhSachTheoDoi"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "L":DangKi
+                },
+                ":b":{
+                    "L":DanhSachTheoDoi
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_4 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"GioiThieu",
+                "#B":"Link"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":GioiThieu
+                },
+                ":b":{
+                    "L":Link
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_5 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"SoNguoiDangKi",
+                "#B":"SoNguoiTheoDoi"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":SoNguoiDangKi
+                },
+                ":b":{
+                    "N":SoNguoiTheoDoi
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_6 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"TenKenh",
+                "#B":"TheLoaiMau"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":TenKenh
+                },
+                ":b":{
+                    "S":TheLoaiMau
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_7 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"Tien",
+                "#B":"TieuDeMacDinh"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":Tien
+                },
+                ":b":{
+                    "S":TieuDeMacDinh
+                }
+            },
+            UpdateExpression:"SET #A= :a, #B= :b",
+            TableName:"HoSoNguoiDung"
+        }));
+        const data_8 = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "TenDangNhap":{
+                    "S":TenDangNhap
+                },
+            },
+            ExpressionAttributeNames:{
+                "#A":"TrangThai"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "B":TrangThai
+                }
+            },
+            UpdateExpression:"SET #A= :a",
+            TableName:"HoSoNguoiDung"
+        }));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//CRUD TheLoaiGame
+//
+const GetTheLoaiGame = async(Key) => {
+    try{
+        const data = await dynamodb.send(new GetItemCommand(
             {
+                "Key":{
+                    "ID TL": {
+                        "S": Key
+                    }
+                },
+                "TableName":"TheLoaiGame"
+            }
+        ));
+        console.log('Success');
+        console.log(data);
+        return data;
+    } catch (err){
+        console.log("Error");
+        console.log(err)
+    }
+};
+//
+const CreateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ID TL":{
+                    "S": ID 
+                },
+                "TenGame":{
+                    "S": TenGame
+                },
+                "HinhARN":{
+                    "S": HinhARN
+                }
+            },
+            TableName:"TheLoaiGame",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ID TL"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+const UpdateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID TL":{
+                    "S": ID
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"TenGame",
+                "#B":"HinhARN"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":TenGame
+                },
+                ":b":{
+                    "S":HinhARN
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B = :b",
+            TableName:"TheLoaiGame"
+        }));
+        console.log("Success"),
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+
+//CRUD LoiViPham
+const GetLoiViPham = async() =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "IDLoi":{
+                    "S":"L01"
+                }
+            }, 
+            "TableName":"LoiViPham"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+const CreateLoiViPham = async(IDLoi, NoiDung) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand(
+            {
+                Item:{
+                    "IDLoi":{
+                        "S":IDLoi
+                    },
+                    "NoiDung":{
+                        "S":NoiDung
+                    }
+                },
+                TableName:"LoiViPham",
+                ConditionExpression: "attribute_not_exists(#ID)",
+                ExpressionAttributeNames:{
+                    "#ID":"IDLoi"
+                }
             }
         ));
         console.log("Success")
         console.log(data)
     }
     catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//
+const UpdateLoiViPham = async(IDLoi, NoiDung) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "IDLoi":{
+                    "S":"IDLoi"
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"NoiDung"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":NoiDung
+                }
+            },
+            UpdateExpression:"SET #A = :a",
+            TableName:"LoiViPham"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//
+//CRUD BaoCaoChoXuLi
+//
+const GetBaoCaoChoXuLi = async(ID) => {
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "ID BaoCao":{
+                    "S":ID
+                }
+            }, 
+            "TableName":"BaoCaoChoXuLi"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+const CreateBaoCaoChoXuLi = async(ID_Stream, NoiDung, SoLan, StreamID) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ID BaoCao":{
+                    "S":ID_Stream
+                },
+                "ViPham":[
+                    {
+                        "ViPham":"L01",
+                        "SoLan":"2"
+                    }
+                ]
+            },
+            TableName:"BaoCaoChoXuLi",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ID BaoCao"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+const UpdateBaoCaoChoXuLi = async() =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID Loi":{
+                    "S":"sss"
+                }
+            },
+            TableName:"BaoCaoChoXuLi"
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
         console.log("Error")
         console.log(err)
     }
@@ -221,7 +686,7 @@ const SignUp = async(Username, Password, email, birthdate, name) => {
     try{
         const data = await cognito_identify_provider.send(new SignUpCommand(
             {            
-                ClientId: ClientId,
+                ClientId:ClientId,
                 Password:Password,
                 Username:Username,
                 UserAttributes: [
@@ -342,7 +807,6 @@ const GetCredentialsForIdentity = async(IdentityId, IdToken) => {
         console.log(err)
     }
 }
-
 //GetCredentialsForIdentity()
 
 const {GetIdCommand} = require("@aws-sdk/client-cognito-identity")
@@ -365,7 +829,9 @@ const GetId = async(IdToken) => {
     }
 }
 
-const {PutObjectCommand} = require("@aws-sdk/client-s3")
+const {PutObjectCommand} = require("@aws-sdk/client-s3");
+const e = require("express");
+const { compile } = require("ejs");
 
 const UploadImageToS3 = async() =>{
     try{
@@ -383,58 +849,6 @@ const UploadImageToS3 = async() =>{
     }
 }
 
-const CreateTheLoaiGame = async(TenGame, HinhARN) =>{
-    try{
-        const data = await dynamodb.send(new PutItemCommand({
-            Item:{
-                "ID TL":{
-                    "S": "1" 
-                },
-                "TenGame":{
-                    "S": TenGame
-                },
-                "HinhARN":{
-                    "S": HinhARN
-                }
-            },
-            TableName:"TheLoaiGame"
-        }));
-        console.log("Success")
-        console.log(data)
-    }
-    catch(err){
-        console.log("Error")
-        console.log(err)
-    }
-}
-
-const UpdateTheLoaiGame = async() =>{
-    try{
-        const data = await dynamodb.send(new UpdateItemCommand({
-            Key:{
-                "ID TL":{
-                    "S": "1"
-                }
-            },
-            ExpressionAttributeNames:{
-                "#A":"TenGame"
-            },
-            ExpressionAttributeValues:{
-                ":a":{
-                    "S":"Dota 3"
-                }
-            },
-            UpdateExpression:"SET #A = :a",
-            TableName:"TheLoaiGame",
-        }));
-        console.log("Success"),
-        console.log(data)
-    }
-    catch(err){
-        console.log("Error")
-        console.log(err)
-    }
-}
 
 module.exports = {GetChannel, CreateChannel, SignOut,
      GetStreamList, GetHoSoNguoiDung, CreateHoSoNguoiDung, 
@@ -442,3 +856,4 @@ module.exports = {GetChannel, CreateChannel, SignOut,
      Login, ChangePassword, GetCredentialsForIdentity,
      GetId, UploadImageToS3, CreateTheLoaiGame, UpdateTheLoaiGame}
 
+CreateBaoCaoChoXuLi("123","")
