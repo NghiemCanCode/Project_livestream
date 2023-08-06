@@ -850,7 +850,7 @@ const GetDichVu = async(ID_DichVu) =>{
                     "S":ID_DichVu
                 }
             }, 
-            "TableName":"LoiViPham"
+            "TableName":"DichVu"
         }));
         console.log("Success")
         console.log(data)
@@ -860,27 +860,143 @@ const GetDichVu = async(ID_DichVu) =>{
         console.log(err)
     }
 }
-//
-const CreateDichVu = async() =>{
+const CreateDichVu = async(ID_DichVu, GiaTien, TenDichVu) =>{
     try{
-        const data = await dynamodb.send(PutItemCommand({
+        const data = await dynamodb.send(new PutItemCommand({
             Item:{
                 "ID DichVu":{
-                    "S":"DV02"
+                    "S":ID_DichVu
                 },
-                "GiaTien":""
-
+                "GiaTien":{
+                    "N":GiaTien
+                },
+                "TenDichVu":{
+                    "S":TenDichVu
+                }
             },
-            TableName:"BaoCaoChoXuLi",
+            TableName:"DichVu",
             ConditionExpression: "attribute_not_exists(#ID)",
             ExpressionAttributeNames:{
-                "#ID":"ID BaoCao"
+                "#ID":"ID DichVu"
             }
         }));
         console.log("Success")
         console.log(data)
     }catch(err){
         console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateDichVu = async(ID_DichVu, GiaTien, TenDichVu) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID DichVu":{
+                    "S":ID_DichVu
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"GiaTien",
+                "#B":"TenDichVu"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":GiaTien
+                },
+                ":b":{
+                    "S":TenDichVu
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B = :b",
+            TableName:"DichVu"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//CRUD DoanhThuToanHeThong
+const GetDoanhThuToanHeThong = async(ThoiGian) =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "ThoiGian":{
+                    "S":ThoiGian
+                }
+            }, 
+            "TableName":"DoanhThuToanHeThong"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const CreateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, TongTienVao)=>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ThoiGian":{
+                    "S":ThoiGian
+                },
+                "TongDoanhThu":{
+                    "N":TongDoanhThu
+                },
+                "TongTienRa":{
+                    "N":TongTienRa
+                },
+                "TongTienVao":{
+                    "N":TongTienVao
+                }
+            },
+            TableName:"DoanhThuToanHeThong",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ThoiGian"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, TongTienVao)=>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ThoiGian":{
+                    "S":ThoiGian
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"TongDoanhThu",
+                "#B":"TongTienRa",
+                "#C":"TongTienVao"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":TongDoanhThu
+                },
+                ":b":{
+                    "N":""
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B = :b",
+            TableName:"DichVu"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
         console.log(err)
     }
 }
@@ -1043,16 +1159,18 @@ const GetId = async(IdToken) => {
 }
 
 const {PutObjectCommand} = require("@aws-sdk/client-s3");
+
 const e = require("express");
 const { compile } = require("ejs");
 const { resolve } = require("path");
 
-const UploadImageToS3 = async() =>{
+const UploadImageToS3 = async(imageFile, imageFileName, MineType) =>{
     try{
         const data = await s3.send(new PutObjectCommand({
-            Body:"FB_IMG_1584438546061.jpg",
+            Body:imageFile,
             Bucket:"projectlivestreamdb",
-            Key:"Meme.jpg"
+            Key:imageFileName,
+            ContentType: MineType
         }));
         console.log("Success")
         console.log(data)       
