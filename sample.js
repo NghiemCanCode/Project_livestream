@@ -21,8 +21,21 @@ const GetChannel = async (arn) => {
 
 // Lấy channel
 
+const {ListStreamKeysCommand} = require("@aws-sdk/client-ivs");
 const {GetStreamKeyCommand} = require("@aws-sdk/client-ivs");
-
+const GetStreamKeyARN = async(channelArn) =>{
+    try{
+        const data = await ivs.send(new ListStreamKeysCommand({
+            channelArn:channelArn
+        }));
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
 const GetStreamKey = async(arn) =>{
     try{
         const data = await ivs.send(new GetStreamKeyCommand({
@@ -36,6 +49,7 @@ const GetStreamKey = async(arn) =>{
         console.log(err)
     }
 }
+
 // Tìm Channel bằng tên
 const {ListChannelsCommand} = require("@aws-sdk/client-ivs"); 
 
@@ -714,14 +728,170 @@ const GetBienBanCamStreamer = async() =>{
         console.log(err)
     }
 }
+const CreateBienBanCamStreamer = async(ID, DSLoiGhiNhan, MucAn, NhanVien, Streamer,
+    ThoiGian, ThoiGianKetThuc, VideoRecordARN) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ID BienBan":{
+                    "S":ID
+                },
+                "DSLoiGhiNhan":{
+                    "L":DSLoiGhiNhan
+                },
+                "MucAn":{
+                    "N":MucAn
+                },
+                "NhanVien":{
+                    "S":NhanVien
+                },
+                "Streamer":{
+                    "S":Streamer
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                },
+                "ThoiGianKetThuc":{
+                    "S":ThoiGianKetThuc
+                }, 
+                "VideoRecordARN":{
+                    "S":VideoRecordARN
+                }
+            },
+            TableName:"BienBanCamStreamer",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ID BienBan"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateBienBanCamStreamer = async(ID, DSLoiGhiNhan, MucAn, NhanVien, Streamer, ThoiGian, ThoiGianKetThuc, VideoRecordARN) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID BienBan":{
+                    "S":"123"
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"DSLoiGhiNhan",
+                "#B":"MucAn",
+                "#C":"NhanVien",
+                "#D":"Streamer",
+                "#E":"ThoiGian",
+                "#F":"ThoiGianKetThuc",
+                "#G":"VideoRecordARN"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "L":DSLoiGhiNhan
+                },
+                ":b":{
+                    "N":MucAn
+                },
+                ":c":{
+                    "S":NhanVien
+                },
+                ":d":{
+                    "S":Streamer
+                },
+                ":e":{
+                    "S":ThoiGian
+                },
+                ":f":{
+                    "S":ThoiGianKetThuc
+                },
+                ":g":{
+                    "S":VideoRecordARN
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B = :b, #C = :c, #D = :d, #E = :e, #F = :f, #G = :g",
+            TableName:"BienBanCamStreamer"
+        }));
+        console.log("Success")
+        console.log(data)
+    } 
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const DeleteBienBanCamStreamer = async() =>{
+    try{
+        const data = await dynamodb.send(new DeleteItemCommand({
+            Key:{
+                "ID BienBan":{
+                    "S":"123"
+                }
+            }, 
+            TableName:"BienBanCamStreamer"
+        }));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+
+}
+//CRUD DichVu
+const GetDichVu = async(ID_DichVu) =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "ID DichVu":{
+                    "S":ID_DichVu
+                }
+            }, 
+            "TableName":"LoiViPham"
+        }));
+        console.log("Success")
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+//
+const CreateDichVu = async() =>{
+    try{
+        const data = await dynamodb.send(PutItemCommand({
+            Item:{
+                "ID DichVu":{
+                    "S":"DV02"
+                },
+                "GiaTien":""
+
+            },
+            TableName:"BaoCaoChoXuLi",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ID BaoCao"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
 //
 const {cognito_identify_provider} = require("./libs/sampleClient.js");
 
 const UserPoolId ='ap-northeast-2_F5v6yidbd'
 const ClientId = "6lhm3fo132s56tfs9k4s7fc38h"
 
-const TenDangNhap = "nghiemsp123"
-const MatKhau = "AlanTuring49"
+//const TenDangNhap = "nghiemsp123"
+//const MatKhau = "AlanTuring49"
 // Đăng ký
 const {SignUpCommand} = require("@aws-sdk/client-cognito-identity-provider")
 
