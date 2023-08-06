@@ -270,7 +270,7 @@ const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN,AnhDaiDienARN,DangKi,Da
                     "S":NgaySinh
                 }
             },
-            UpdateExpression:"SET #A= :a, #B= :b",
+            UpdateExpression:"SET #A= :a, #B= :b, #C= :c, #D= :d, #E= :e, #F= :f, #G= :g, #H= :h, #I= :i, #K= :k,#L= :l, #M= :m, #N= :n, #O= :o, #P= :p",
             TableName:"HoSoNguoiDung"
             
         }));
@@ -805,11 +805,416 @@ const UpdateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, Tong
                     "N":TongDoanhThu
                 },
                 ":b":{
-                    "N":""
+                    "N":TongTienRa
+                },
+                ":c":{
+                    "N":TongTienVao
                 }
             },
-            UpdateExpression:"SET #A = :a, #B = :b",
-            TableName:"DichVu"
+            UpdateExpression:"SET #A = :a, #B = :b, #C = :c",
+            TableName:"DoanhThuToanHeThong"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//CRUD LichSuGiaoDich
+const GetLichSuGiaoDich = async(Streamer, ThoiGian) =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "Streamer":{
+                    "S":Streamer
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                }
+            }, 
+            "TableName":"LichSuGiaoDich"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const CreateLichSuGiaoDich = async(Streamer, ThoiGian, TenDichVu, LoaiGiaoDich, PayPal, SoTien) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "Streamer":{
+                    "S":Streamer
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                },
+                "BienLaiGiaoDich":{
+                    "S":TenDichVu
+                },
+                "LoaiGiaoDich":{
+                    "BOOL":LoaiGiaoDich
+                },
+                "PayPal":{
+                    "S":PayPal
+                },
+                "SoTien":{
+                    "N":SoTien
+                }
+            },
+            TableName:"LichSuGiaoDich",
+            ConditionExpression: "attribute_not_exists(#ID) AND attribute_not_exists(#TG)",
+            ExpressionAttributeNames:{
+                "#ID":"Streamer",
+                "#TG":"ThoiGian"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateLichSuGiaoDich = async(Streamer,ThoiGian,BienLaiGiaoDich, LoaiGiaoDich, PayPal, SoTien) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "Streamer":{
+                    "S":Streamer
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"BienLaiGiaoDich",
+                "#B":"LoaiGiaoDich",
+                "#C":"PayPal",
+                "#D":"SoTien"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":BienLaiGiaoDich
+                },
+                ":b":{
+                    "BOOL":LoaiGiaoDich
+                },
+                ":c":{
+                    "S":PayPal
+                },
+                ":d":{
+                    "N":SoTien
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B = :b, #C = :c, #D = :d",
+            TableName:"LichSuGiaoDich"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//CRUD LichSuQuanLi
+const GetLichSuQuanLi = async(NhanVien, ThoiGian) =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "NhanVien":{
+                    "S":NhanVien
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                }
+            }, 
+            "TableName":"LichSuQuanLi"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const CreateLichSuQuanLi = async(NhanVien, ThoiGian, CongViecThucHien, DoiTuong) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "NhanVien":{
+                    "S":NhanVien
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                },
+                "CongViecThucHien":{
+                    "S":CongViecThucHien
+                },
+                "DoiTuong":{
+                    "S":DoiTuong
+                }
+            },
+            TableName:"LichSuQuanLi",
+            ConditionExpression: "attribute_not_exists(#ID) AND attribute_not_exists(#TG)",
+            ExpressionAttributeNames:{
+                "#ID":"NhanVien",
+                "#TG":"ThoiGian"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateLichSuQuanLi = async(NhanVien, ThoiGian, CongViecThucHien, DoiTuong) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "NhanVien":{
+                    "S":NhanVien
+                },
+                "ThoiGian":{
+                    "S":ThoiGian
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"CongViecThucHien",
+                "#B":"DoiTuong"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":CongViecThucHien
+                },
+                ":b":{
+                    "S":DoiTuong
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B",
+            TableName:"LichSuQuanLi"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//CRUD Stream
+const GetStreamTable = async(ID_Stream) =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "ID Stream":{
+                    "S":ID_Stream
+                }
+            }, 
+            "TableName":"Stream"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const CreateStreamTable = async(ID_Stream, Dodai, Donate, SoLuotXemTrungBinh, Streamer, TheLoai, TieuDe,TongLuotDangKiMoi, TongTienDonate) =>{
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ID Stream":{
+                    "S":ID_Stream
+                },
+                "Dodai":{
+                    "N":Dodai
+                },
+                "Donate":{
+                    "L":Donate
+                },
+                "SoLuotXemTrungBinh":{
+                    "N":SoLuotXemTrungBinh
+                },
+                "Streamer":{
+                    "S":Streamer
+                },
+                "TheLoai":{
+                    "S":TheLoai
+                },
+                "TieuDe":{
+                    "S":TieuDe
+                },
+                "TongLuotDangKiMoi":{
+                    "N":TongLuotDangKiMoi
+                },
+                "TongLuotDangKiMoi":{
+                    "N":TongTienDonate
+                }
+            },
+            TableName:"Stream",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ID Stream"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateStreamTable = async(ID_Stream, Dodai, Donate, SoLuotXemTrungBinh, Streamer, TheLoai, TieuDe,TongLuotDangKiMoi, TongTienDonate) =>{
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID Stream":{
+                    "S":ID_Stream
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"DoDai",
+                "#B":"Donate",
+                "#C":"SoLuotXemTrungBinh",
+                "#D":"Streamer",
+                "#E":"TheLoai",
+                "#F":"TieuDe",
+                "#G":"TongLuotDangKiMoi",
+                "#H":"TongTienDonate"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":Dodai
+                },
+                ":b":{
+                    "L":Donate
+                },
+                ":c":{
+                    "N":SoLuotXemTrungBinh
+                },
+                ":d":{
+                    "D":Streamer
+                },
+                ":e":{
+                    "S":TheLoai
+                },
+                ":f":{
+                    "S":TieuDe
+                },
+                ":g":{
+                    "N":TongLuotDangKiMoi
+                },
+                ":h":{
+                    "N":TongTienDonate
+            },
+            UpdateExpression:"SET #A = :a, #B = :b, SET #C = :c, #D = :d, SET #E = :e, #F = :f, SET #G = :g, #H = :h",
+            TableName:"Stream"
+        }
+    }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//CRUD VideoRecord
+const GetVideoRecord = async(ID_Stream) => {
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "ID Stream":{
+                    "S":ID_Stream
+                }
+            }, 
+            "TableName":"VideoRecord"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const CreateVideoRecord = async(ID_Stream,SoLuotXemVideo,TieuDe,TrangThai,VideoARN) => {
+    try{
+        const data = await dynamodb.send(new PutItemCommand({
+            Item:{
+                "ID Stream":{
+                    "S":ID_Stream
+                },
+                "SoLuotXemVideo":{
+                    "N":SoLuotXemVideo
+                },
+                "TieuDe":{
+                    "S":TieuDe
+                },
+                "TrangThai":{
+                    "BOOL":TrangThai
+                },
+                "VideoARN":{
+                    "S":VideoARN
+                }
+            },
+            TableName:"VideoRecord",
+            ConditionExpression: "attribute_not_exists(#ID)",
+            ExpressionAttributeNames:{
+                "#ID":"ID Stream"
+            }
+        }));
+        console.log("Success")
+        console.log(data)
+    }catch(err){
+        console.log("Error")
+        console.log(err)
+    }
+}
+const UpdateVideoRecord = async(ID_Stream,SoLuotXemVideo,TieuDe,TrangThai,VideoARN) => {
+    try{
+        const data = await dynamodb.send(new UpdateItemCommand({
+            Key:{
+                "ID Stream":{
+                    "S":ID_Stream
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"SoLuotXemVideo",
+                "#B":"TieuDe",
+                "#C":"TrangThai",
+                "#D":"VideoARN"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "N":SoLuotXemVideo
+                },
+                ":b":{
+                    "S":TieuDe
+                },
+                ":c":{
+                    "BOOL":TrangThai
+                },
+                ":d":{
+                    "S":VideoARN
+                }
+            },
+            UpdateExpression:"SET #A = :a, #B = :b, #C = :c, #D = :d",
+            TableName:"VideoRecord"
         }));
         console.log("Success");
         console.log(data)
@@ -982,6 +1387,7 @@ const {PutObjectCommand} = require("@aws-sdk/client-s3");
 const e = require("express");
 const { compile } = require("ejs");
 const { resolve } = require("path");
+const { Stream } = require("stream");
 
 const UploadImageToS3 = async(imageFile, imageFileName, MineType) =>{
     try{
@@ -1004,5 +1410,3 @@ module.exports = {GetChannel, CreateChannel, SignOut,
      UpdateHoSoNguoiDung, SignUp, ConfirmSignUp,
      Login, ChangePassword, GetCredentialsForIdentity,
      GetId, UploadImageToS3, CreateTheLoaiGame, UpdateTheLoaiGame}
-
-CreateHoSoNguoiDung("NghiemSieuTriTue", "123", "456")
