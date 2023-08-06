@@ -1,8 +1,18 @@
 let getPackageRegister = (req, res) => {
-    return res.render("./package_register.ejs")
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./package_register.ejs", {userName:''})
+    }else{
+        return res.render("./package_register.ejs", {userName:cookies.UserName})
+    }
 }
 let getPackageRegisterExpired = (req, res) =>{
-    return res.render("./package_register_expired.ejs")
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./package_register_expired.ejs", {userName:''})
+    }else{
+        return res.render("./package_register_expired.ejs", {userName:cookies.UserName})
+    }
 }
 module.exports = {
     getPackageRegister,

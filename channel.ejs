@@ -25,7 +25,7 @@
                     <ul class="navbar-list">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
                             <li>
-                                <a href="index.html">
+                                <a href="/">
                                     <img style="width: 48px; height: 28px; cursor: pointer;"
                                         src="/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
                                 </a>
@@ -188,7 +188,7 @@
                                 <li class="navbar-user-item">
                                     <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
-                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                        <span style="color: #333; font-weight: 550;" class="ml-10"><%= userName %></span>
                                     </div>
                                 </li>
                                 <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
@@ -224,10 +224,12 @@
                                     </div>
                                 </li>
                                 <li class="navbar-user-item navbar-user-item--separate">
-                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
-                                    </div>
+                                    <form action="/logout" method="get">
+                                        <button id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -346,7 +348,7 @@
                                         </div>
                                         <div class="ml-5 mt-10" style="width: 100%;">
                                             <div style="display: flex; justify-content: space-between; width: 100%;">
-                                                <h1 class="ml-5 mb-5" style="font-weight: bolder;">user123
+                                                <h1 class="ml-5 mb-5" style="font-weight: bolder;"><%= userName %>
                                                 </h1>
                                             </div>
                                         </div>
@@ -384,7 +386,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <button onclick="window.location.href = './setting.html'" class="btn"
+                                        <button onclick="window.location.href = '/setting/profile'" class="btn"
                                             style="background-color: #e7e7ea;">
                                             <i class="fa-solid fa-arrow-up-right"></i>
                                             Chỉnh sửa

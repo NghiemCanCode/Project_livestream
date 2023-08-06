@@ -78,18 +78,20 @@
                     <ul class="navbar-list">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
                             <li>
-                                <a href="index.html">
+                                <a href="/">
                                     <img style="width: 48px; height: 28px; cursor: pointer;"
                                         src="/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
                                 </a>
                             </li>
                             <li class="hoverHeader" style="margin-left: 20px; cursor: pointer;">
-                                <a href="following.html" style="color: #000; text-decoration: none;">
+                                <a href="/following" style="color: #000; text-decoration: none;">
                                     <h2>Đang theo dõi</h2>
                                 </a>
                             </li>
                             <li class="hoverHeader" id="browse" style="margin-left: 30px; cursor: pointer;">
-                                <h2>Duyệt</h2>
+                                <a href="/browse" style="color: #000; text-decoration: none;">
+                                    <h2>Duyệt</h2>
+                                </a>
                             </li>
                         </div>
                     </ul>
@@ -107,173 +109,166 @@
                     </ul>
 
                     <ul class="navbar-list">
-                        <div id="formLoginARegister" style="display: none;">
-                            <li style="color: var(--primary-color-2);"
-                                class="navbar-item navbar-item--bold navbar-item--separate js-modal-register">Đăng ký
+                        <% if (userName) { %>
+                            <div>
+                                <svg id="bitMenu" width="20px" height="20px" version="1.1"
+                                    viewBox="0 0 20 20" x="0px" y="0px" aria-hidden="true" focusable="false"
+                                    class="ScIconSVG-sc-1q25cff-1 dSicFr mr-5 cs-p iconBits">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3 12l7-10 7 10-7 6-7-6zm2.678-.338L10 5.487l4.322 6.173-.85.728L10 11l-3.473 1.39-.849-.729z">
+                                    </path>
+                                </svg>
+                                <ul class="bits-menu">
+                                    <li class="navbar-user-item">
+                                        <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <span style="text-align: center;" class="w-100">
+                                                <div style="color: #333; font-weight: 550;">Mua Anna</div>
+                                                <div>Bạn có 0 Anna</div>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 10px 0;">
+                                            <div style="color: #333;" class="ml-10">Giá được hiển thị
+                                                VND
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;"
+                                            class="d-flex align-item-center justify-content-between">
+                                            <div>
+                                                <div>
+                                                    <span style="font-weight: bolder;">20 Anna</span>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit1.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit2.png"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="mt-3">
+                                                    <button id="btnFinalBits" class="btn btn--primary">20,000</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;"
+                                            class="d-flex align-item-center justify-content-between">
+                                            <div>
+                                                <div>
+                                                    <span style="font-weight: bolder;">50 Anna</span>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit1.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit2.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit3.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit4.png"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="mt-3">
+                                                    <button id="btnFinalBits" class="btn btn--primary">50,000</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;"
+                                            class="d-flex align-item-center justify-content-between">
+                                            <div>
+                                                <div>
+                                                    <span style="font-weight: bolder;">100 Anna</span>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit1.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit2.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit3.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit4.png"
+                                                        alt="">
+                                                    <img style="width: 25px; height: 25px;" src="/img/bit5.png"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="mt-3">
+                                                    <button id="btnFinalBits" class="btn btn--primary">100,000</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <li id="menuAvt" class="navbar-item navbar-user" >
+                                <img src="/img/avt_user.png" alt="avatar" class="navbar-user-avt">
+                                <ul class="navbar-user-menu">
+                                    <li class="navbar-user-item">
+                                        <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
+                                            <span style="color: #333; font-weight: 550;" class="ml-10"><%= userName %></span>
+                                        </div>
+                                    </li>
+                                    <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-camera"></i>
+                                            <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
+                                        </div>
+                                    </li>
+                                    <li id="creatorDashboard" class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-clipboard"></i>
+                                            <span style="color: #333;" class="ml-10">Thống kê doang thu
+                                                </span>
+                                        </div>
+                                    </li>
+                                    <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-regular fa-star"></i>
+                                            <span style="color: #333;" class="ml-10">Gói đăng ký theo dõi</span>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item">
+                                        <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-wallet"></i>
+                                            <span id="twitchWallet" style="color: #333;" class="ml-10">Ví Anna</span>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item navbar-user-item--separate">
+                                        <div style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-gear"></i>
+                                            <span id="setting" style="color: #333;" class="ml-10">Cài đặt</span>
+                                        </div>
+                                    </li>
+                                    <li class="navbar-user-item navbar-user-item--separate">
+                                        <form action="/logout" method="get">
+                                            <button id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                                <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                                <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
                             </li>
-                            <li style="color: var(--primary-color-2);"
-                                class="navbar-item navbar-item--bold js-modal-login">
-                                Đăng nhập</li>
-                        </div>
-
-                        <div>
-                            <svg id="bitMenu" width="20px" height="20px" version="1.1" viewBox="0 0 20 20" x="0px"
-                                y="0px" aria-hidden="true" focusable="false"
-                                class="ScIconSVG-sc-1q25cff-1 dSicFr mr-5 cs-p">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3 12l7-10 7 10-7 6-7-6zm2.678-.338L10 5.487l4.322 6.173-.85.728L10 11l-3.473 1.39-.849-.729z">
-                                </path>
-                            </svg>
-                            <ul class="bits-menu">
-                                <li class="navbar-user-item">
-                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <span style="text-align: center;" class="w-100">
-                                            <div style="color: #333; font-weight: 550;">Mua Anna</div>
-                                            <div>Bạn có 0 Anna</div>
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 10px 0;">
-                                        <div style="color: #333;" class="ml-10">Giá được hiển thị
-                                            VND
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;"
-                                        class="d-flex align-item-center justify-content-between">
-                                        <div>
-                                            <div>
-                                                <span style="font-weight: bolder;">20 Anna</span>
-                                            </div>
-                                            <div class="d-flex">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit1.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit2.png"
-                                                    alt="">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="mt-3">
-                                                <button id="btnFinalBits" class="btn btn--primary">20,000</button>
-                                            </div>
-                                            <!-- <div class="mt-5">
-                                                <span>29% discount</span>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;"
-                                        class="d-flex align-item-center justify-content-between">
-                                        <div>
-                                            <div>
-                                                <span style="font-weight: bolder;">50 Anna</span>
-                                            </div>
-                                            <div class="d-flex">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit1.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit2.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit3.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit4.png"
-                                                    alt="">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="mt-3">
-                                                <button id="btnFinalBits" class="btn btn--primary">50,000</button>
-                                            </div>
-                                            <!-- <div class="mt-5">
-                                                <span>8% discount</span>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;"
-                                        class="d-flex align-item-center justify-content-between">
-                                        <div>
-                                            <div>
-                                                <span style="font-weight: bolder;">100 Anna</span>
-                                            </div>
-                                            <div class="d-flex">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit1.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit2.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit3.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit4.png"
-                                                    alt="">
-                                                <img style="width: 25px; height: 25px;" src="/img/bit5.png"
-                                                    alt="">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="mt-3">
-                                                <button id="btnFinalBits" class="btn btn--primary">100,000</button>
-                                            </div>
-                                            <!-- <div class="mt-5">
-                                                <span>8% discount</span>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <li id="menuAvt" class="navbar-item navbar-user" style="display: block;">
-                            <img src="/img/avt_user.png" alt="avatar" class="navbar-user-avt">
-                            <ul class="navbar-user-menu">
-                                <li class="navbar-user-item">
-                                    <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
-                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
-                                    </div>
-                                </li>
-                                <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-camera"></i>
-                                        <span id="channels" style="color: #333;" class="ml-10">Kênh</span>
-                                    </div>
-                                </li>
-                                <li id="creatorDashboard" class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-clipboard"></i>
-                                        <span style="color: #333;" class="ml-10">Thống kê doang thu
-                                        </span>
-                                    </div>
-                                </li>
-                                <li id="signsubs" class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-regular fa-star"></i>
-                                        <span id="packageRegister" style="color: #333;" class="ml-10">Gói đăng ký theo
-                                            dõi</span>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item">
-                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-wallet"></i>
-                                        <span id="twitchWallet" style="color: #333;" class="ml-10">Ví Anna</span>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
-                                    <div style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-gear"></i>
-                                        <span id="setting" style="color: #333;" class="ml-10">Cài đặt</span>
-                                    </div>
-                                </li>
-                                <li class="navbar-user-item navbar-user-item--separate">
-                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                            <%} else { %>
+                                <div id="formLoginARegister" class="d-flex">
+                                    <li style="color: var(--primary-color-2);"
+                                        class="navbar-item navbar-item--bold navbar-item--separate js-modal-register">Đăng ký
+                                    </li>
+                                    <li style="color: var(--primary-color-2);"
+                                        class="navbar-item navbar-item--bold js-modal-login">
+                                        Đăng nhập</li>
+                                </div>
+                            <% } %>
                     </ul>
                 </nav>
             </div>

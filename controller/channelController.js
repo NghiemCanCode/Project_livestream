@@ -1,17 +1,42 @@
 let getChannel2 = (req, res) => {
-    return res.render("./channel_2.ejs")
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./channel_2.ejs", {userName:''})
+    }else{
+        return res.render("./channel_2.ejs", {userName:cookies.UserName})
+    }
 }
 let getChannelHome = (req, res) => {
-    return res.render("./channel_home_page.ejs")
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./channel_home_page.ejs", {userName:''})
+    }else{
+        return res.render("./channel_home_page.ejs", {userName:cookies.UserName})
+    }
 }
 let getChannelSchedule = (req, res) => {
-    return res.render("./channel_schedule.ejs")
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./channel_schedule.ejs", {userName:''})
+    }else{
+        return res.render("./channel_schedule.ejs", {userName:cookies.UserName})
+    }
 }
 let getChannelVideo = (req, res) => {
-    return res.render("./channel_videos.ejs")
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./channel_videos.ejs", {userName:''})
+    }else{
+        return res.render("./channel_videos.ejs", {userName:cookies.UserName})
+    }
 }
-let getChannelDescrision = (reg, res) => {
-    return res.render("./channel.js")
+let getChannelDescrision = (req, res) => {
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./channel.ejs", {userName:''})
+    }else{
+        return res.render("./channel.ejs", {userName:cookies.UserName})
+    }
 }
 module.exports = {
     getChannel2,

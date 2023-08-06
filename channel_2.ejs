@@ -38,18 +38,20 @@
                     <ul class="navbar-list">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
                             <li>
-                                <a href="index.html">
+                                <a href="/">
                                     <img style="width: 48px; height: 28px; cursor: pointer;"
                                         src="/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
                                 </a>
                             </li>
                             <li class="hoverHeader" style="margin-left: 20px; cursor: pointer;">
-                                <a href="following.html" style="color: #000; text-decoration: none;">
+                                <a href="/followingl" style="color: #000; text-decoration: none;">
                                     <h2>Đang theo dõi</h2>
                                 </a>
                             </li>
                             <li class="hoverHeader" id="browse" style="margin-left: 30px; cursor: pointer;">
-                                <h2>Duyệt</h2>
+                                <a href="/browse" style="color: #000; text-decoration: none;">
+                                    <h2>Duyệt</h2>
+                                </a>
                             </li>
                         </div>
                     </ul>
@@ -191,7 +193,7 @@
                                 <li class="navbar-user-item">
                                     <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
-                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                        <span style="color: #333; font-weight: 550;" class="ml-10"><% userName %></span>
                                     </div>
                                 </li>
                                 <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
@@ -227,10 +229,12 @@
                                     </div>
                                 </li>
                                 <li class="navbar-user-item navbar-user-item--separate">
-                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
-                                    </div>
+                                    <form action="/logout" method="get">
+                                        <button id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -406,13 +410,13 @@
                         <div style="padding: 0 16px 0 16px;">
                             <div class="d-flex justify-content-between">
                                 <div style="display: flex; margin-top: 8px;">
-                                    <img onclick="window.location.href = './channel.html'"
+                                    <img onclick="window.location.href = '/Name/about'"
                                         src="/img/avt_user.png" class="style-img-live cs-p" alt="">
                                     <div class="ml-5" style="width: 100%;">
                                         <div style="display: flex; justify-content: space-between; width: 100%;">
-                                            <span onclick="window.location.href = './channel.html'"
+                                            <span onclick="window.location.href = '/Name/about'"
                                                 class="restyle-p ml-5 header__cart-item-name cs-p"
-                                                style="font-weight: bolder;">user123
+                                                style="font-weight: bolder;"><%= userName %>
                                             </span>
                                         </div>
                                     </div>
@@ -436,14 +440,14 @@
                                 style="background-color: #fff; height: auto; margin-bottom: 100px; padding: 40px;">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <h1>Thông tin User123</h1>
+                                        <h1>Thông tin <$= userName %></h1>
                                         <div class="d-flex align-item-center">
                                             <span style="font-size: 16px;">0
                                                 <span style="font-size: 12px;">Người theo dõi</span>
                                             </span>
                                         </div>
                                         <p>
-                                            Chúng tôi không biết nhiều về họ, nhưng chúng tôi chắc chắn rằng user123 rất
+                                            Chúng tôi không biết nhiều về họ, nhưng chúng tôi chắc chắn rằng <%= userName %> rất
                                             tuyệt.
                                         </p>
                                     </div>

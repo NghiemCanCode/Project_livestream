@@ -10,9 +10,10 @@ let getDetailVideo = (req, res) => {
 let getDetail = (req, res) => {
     return res.render("./detail_avt.ejs")
 }
+
 module.exports = {
     getDetailHome,
     getDetailSchedule,
     getDetailVideo,
-    getDetail
+    getDetail,
 }

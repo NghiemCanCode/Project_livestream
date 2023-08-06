@@ -25,16 +25,20 @@
                     <ul class="navbar-list">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
                             <li>
-                                <a href="index.html">
+                                <a href="/">
                                     <img style="width: 48px; height: 28px; cursor: pointer;"
                                         src="/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
                                 </a>
                             </li>
                             <li id="followingHeader" class="hoverHeader" style="margin-left: 20px; cursor: pointer;">
-                                <h2>Đang theo dõi</h2>
+                                <a href="/following" style="color: #000; text-decoration: none;">
+                                    <h2>Đang theo dõi</h2>
+                                </a>
                             </li>
                             <li class="hoverHeader" style="margin-left: 30px; cursor: pointer;">
-                                <h2>Duyệt</h2>
+                                <a href="/browse" style="color: #000; text-decoration: none;">
+                                    <h2>Duyệt</h2>
+                                </a>
                             </li>
                         </div>
                     </ul>
@@ -177,7 +181,7 @@
                                 <li class="navbar-user-item">
                                     <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
-                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                        <span style="color: #333; font-weight: 550;" class="ml-10"><%= userName %></span>
                                     </div>
                                 </li>
                                 <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
@@ -213,10 +217,12 @@
                                     </div>
                                 </li>
                                 <li class="navbar-user-item navbar-user-item--separate">
-                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
-                                    </div>
+                                    <form action="/logout" method="get">
+                                        <button id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -328,14 +334,14 @@
                                 <div class="d-flex justify-content-between">
                                     <div style="display: flex; margin-top: 8px;">
                                         <div>
-                                            <img onClick="window.location.href = 'channel_2.html'"
+                                            <img onClick="window.location.href = '/Name/Channel'"
                                                 src="/img/avt_user.png" class="cs-p"
                                                 style="width: 65px; height: 65px; border-radius: 9000px; border: 3px solid #53535f; padding: 2px;"
                                                 alt="">
                                         </div>
                                         <div class="ml-5 mt-10" style="width: 100%;">
                                             <div style="display: flex; justify-content: space-between; width: 100%;">
-                                                <h1 class="ml-5 mb-5" style="font-weight: bolder;">user123
+                                                <h1 class="ml-5 mb-5" style="font-weight: bolder;"><%= userName %>
                                                 </h1>
                                             </div>
                                         </div>
@@ -357,7 +363,7 @@
                                             style="font-weight: 500; font-size: 18px; color: #333;" class="cs-p">
                                             Trang chủ
                                         </div>
-                                        <div onclick="window.location.href = './channel.html'" class="cs-p"
+                                        <div onclick="window.location.href = '/Name/about'" class="cs-p"
                                             style="font-weight: 500; font-size: 18px; color: #333; margin-left: 20px;">
                                             Giới Thiệu
                                         </div>
@@ -382,7 +388,7 @@
 
                                 <div class="sm-gutters mt-30">
                                     <div>
-                                        <h1 style="font-size: 4rem;">user123 đã truyền trực tiếp</h1>
+                                        <h1 style="font-size: 4rem;"><%= userName %> đã truyền trực tiếp</h1>
                                         <div style="margin-top: 50px;">
                                             <button class="btn btn--primary">Hôm nay</button>
                                             <button class="btn btn--width-icon"

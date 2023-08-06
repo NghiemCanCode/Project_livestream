@@ -1,10 +1,11 @@
 import { error } from 'console';
 import configViewEngine from './view_engine';
 import initWebRoute from './web';
+
 const cookieParser=require('cookie-parser');
 const ejs = require('ejs')
 const express = require('express');
-const {check, validationResult}= require('express-validator')
+
 const paypal = require('paypal-rest-sdk');
 
 const app = express();

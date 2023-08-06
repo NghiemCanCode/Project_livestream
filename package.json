@@ -10,6 +10,7 @@
     "@babel/core": "^7.22.9",
     "@babel/node": "^7.22.6",
     "@babel/preset-env": "^7.22.9",
+    "aws-sdk": "^2.1430.0",
     "body-parser": "^1.20.2",
     "cookie": "^0.5.0",
     "cookie-parser": "^1.4.6",

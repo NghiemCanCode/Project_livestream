@@ -138,7 +138,7 @@
                                 <li class="navbar-user-item">
                                     <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
-                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                        <span style="color: #333; font-weight: 550;" class="ml-10"><%= userName %></span>
                                     </div>
                                 </li>
                                 <li id="backToHome" class="navbar-user-item navbar-user-item--separate">
@@ -180,10 +180,12 @@
                                     </div>
                                 </li>
                                 <li class="navbar-user-item navbar-user-item--separate">
-                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
-                                    </div>
+                                    <form action="/logout" method="get">
+                                        <button id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -422,7 +424,7 @@
                             </div>
                         </li>
                         <li class="mt-10 style-li">
-                            <div onclick="window.location.href = 'list_follower.html'" style="font-size: 12px;"
+                            <div onclick="window.location.href = '/Follower'" style="font-size: 12px;"
                                 class="d-flex align-item-center cs-p">
                                 <i style="color: #333;" class="fa-solid fa-clipboard mr-20"></i>
                                 <span>Danh sách người theo dõi</span>

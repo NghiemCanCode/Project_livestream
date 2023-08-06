@@ -25,16 +25,20 @@
                     <ul class="navbar-list">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
                             <li>
-                                <a href="index.html">
+                                <a href="/">
                                     <img style="width: 48px; height: 28px; cursor: pointer;"
                                         src="/img/Assassins-Creed-Logo-removebg-preview.png" alt="">
                                 </a>
                             </li>
                             <li id="followingHeader" class="hoverHeader" style="margin-left: 20px; cursor: pointer;">
-                                <h2>Đang theo dõi</h2>
+                                <a href="/following" style="color: #000; text-decoration: none;">
+                                    <h2>Đang theo dõi</h2>
+                                </a>
                             </li>
                             <li class="hoverHeader" style="margin-left: 30px; cursor: pointer;">
-                                <h2>Duyệt</h2>
+                                <a href="/browse" style="color: #000; text-decoration: none;">
+                                    <h2>Duyệt</h2>
+                                </a>
                             </li>
                         </div>
                     </ul>
@@ -176,7 +180,7 @@
                                 <li class="navbar-user-item">
                                     <div id="userProfile" style="padding: 8px 16px;" class="d-flex align-item-center">
                                         <img src="/img/avt_user.png" class="navbar-user-avt" alt="">
-                                        <span style="color: #333; font-weight: 550;" class="ml-10">user123</span>
+                                        <span style="color: #333; font-weight: 550;" class="ml-10"><%= userName %></span>
                                     </div>
                                 </li>
                                 <li id="userChannel" class="navbar-user-item navbar-user-item--separate">
@@ -212,10 +216,12 @@
                                     </div>
                                 </li>
                                 <li class="navbar-user-item navbar-user-item--separate">
-                                    <div id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
-                                        <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        <span style="color: #333;" class="ml-10">Đăng xuất</span>
-                                    </div>
+                                    <form action="/logout" method="get">
+                                        <button id="logout" style="padding: 8px 16px;" class="d-flex align-item-center">
+                                            <i style="color: #333;" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            <span style="color: #333;" class="ml-10">Đăng xuất</span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -341,7 +347,7 @@
                                         <div style="font-weight: 500; font-size: 18px; color: var(--primary-color-2);">
                                             Gói đăng ký theo dõi
                                         </div>
-                                        <div onclick="window.location.href = './package_register_expired.html'"
+                                        <div onclick="window.location.href = '/subscriptionsExpired'"
                                             style="font-weight: 500; font-size: 18px; color: #333; margin-left: 20px;"
                                             class="cs-p">
                                             Gói đăng ký theo dõi đã hết hạn

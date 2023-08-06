@@ -1,14 +1,34 @@
-let getCreatorDashBoard = (reg, res) => {
-    return res.render("./creator_dashboard.ejs")
+let getCreatorDashBoard = (req, res) => {
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./creator_dashboard.ejs", {userName:''})
+    }else{
+        return res.render("./creator_dashboard.ejs", {userName:cookies.UserName})
+    }
 }
-let getListFollower = (reg, res) => {
-    return res.render("./list_follower.ejs")
+let getListFollower = (req, res) => {
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./list_follower.ejs", {userName:''})
+    }else{
+        return res.render("./list_follower.ejs", {userName:cookies.UserName})
+    }
 }
-let getAccountSetting = (reg, res) => {
-    return res.render("./setting.ejs")
+let getAccountSetting = (req, res) => {
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./setting.ejs", {userName:''})
+    }else{
+        return res.render("./setting.ejs", {userName:cookies.UserName})
+    }
 }
-let getAccountSettingSecurity = (reg, res) => {
-    return res.render("./setting_security.ejs")
+let getAccountSettingSecurity = (req, res) => {
+    const cookies= req.cookies;
+    if(cookies.UserName===null){
+        return res.render("./setting_security.ejs", {userName:''})
+    }else{
+        return res.render("./setting_security.ejs", {userName:cookies.UserName})
+    }
 }
 
 module.exports = {
