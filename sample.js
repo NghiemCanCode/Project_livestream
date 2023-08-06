@@ -1339,7 +1339,36 @@ const ChangePassword = async(PreviousPassword, ProposedPassword, AccessToken) =>
     }
     
 }
+const {ForgotPasswordCommand} = require("@aws-sdk/client-cognito-identity-provider")
+const ForgotPassword = async(UserName) =>{
+    try{
+        const data = await cognito_identify_provider.send(new ForgotPasswordCommand({
+            ClientId:ClientId,
+            Username:UserName
+        }));
+        console.log(data)
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+const {ConfirmForgotPasswordCommand} = require("@aws-sdk/client-cognito-identity-provider")
 
+const ConfirmForgotPassword = async(UserName, ConfirmationCode, Password) =>{
+    try{
+        const data = await cognito_identify_provider.send(new ConfirmForgotPasswordCommand({
+            ClientId:ClientId,
+            Username:UserName,
+            ConfirmationCode:ConfirmationCode,
+            Password:Password
+        }));
+        console.log(data)
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+ConfirmForgotPassword("nghiemsp123", "098146","AlanTuring49")
 const {cognito_identify} = require("./libs/sampleClient.js");
 
 const {GetCredentialsForIdentityCommand} = require("@aws-sdk/client-cognito-identity")
@@ -1387,7 +1416,7 @@ const {PutObjectCommand} = require("@aws-sdk/client-s3");
 const e = require("express");
 const { compile } = require("ejs");
 const { resolve } = require("path");
-const { Stream } = require("stream");
+const { Stream, PassThrough } = require("stream");
 
 const UploadImageToS3 = async(imageFile, imageFileName, MineType) =>{
     try{
