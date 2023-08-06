@@ -2,6 +2,8 @@ const {ivs, s3} = require("./libs/sampleClient.js");
 const server = "rtmps://416fc24342ee.global-contribute.live-video.net:443/app/"
 // Hàm lấy channel
 
+const assert = require("assert");
+
 const {GetChannelCommand, StreamHealth} = require("@aws-sdk/client-ivs");
 
 const GetChannel = async (arn) => {
@@ -93,8 +95,8 @@ const {GetItemCommand} = require("@aws-sdk/client-dynamodb")
 const {PutItemCommand} = require("@aws-sdk/client-dynamodb")
 const {UpdateItemCommand} = require("@aws-sdk/client-dynamodb")
 const {DeleteItemCommand} = require("@aws-sdk/client-dynamodb")
+
 //CRUD HoSoNguoiDung
-//
 const GetHoSoNguoiDung = async(Key) =>{
     try{
         const data = await dynamodb.send(new GetItemCommand(
@@ -114,8 +116,7 @@ const GetHoSoNguoiDung = async(Key) =>{
         console.log(err)
     }
 };
-//
-const CreateHoSoNguoiDung = async(TenDangNhap, Gmail) =>{
+const CreateHoSoNguoiDung = async(TenDangNhap, Gmail, NgaySinh) =>{
     try{
         const data = await dynamodb.send(new PutItemCommand(
             {
@@ -269,14 +270,18 @@ const CreateHoSoNguoiDung = async(TenDangNhap, Gmail) =>{
                 },
             },
             ExpressionAttributeNames:{
-                "#A":"TrangThai"
+                "#A":"TrangThai",
+                "#B":"NgaySinh"
             },
             ExpressionAttributeValues:{
                 ":a":{
-                    "B":"True"
+                    "A":"True"
+                },
+                ":b":{
+                    "B":NgaySinh
                 }
             },
-            UpdateExpression:"SET #A= :a",
+            UpdateExpression:"SET #A= :a, #B = :b",
             TableName:"HoSoNguoiDung"
         }));
         console.log("Success")
@@ -285,9 +290,7 @@ const CreateHoSoNguoiDung = async(TenDangNhap, Gmail) =>{
         console.log(err)
     }
 }
-//
-const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN, AnhDaiDienARN, DangKi, DanhSachTheoDoi, GioiThieu, Gmail, 
-    Link, SoNguoiDangKi, SoNguoiTheoDoi, TenKenh, TheLoaiMau, Tien, TieuDeMacDinh, TrangThai) =>{
+const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN, AnhDaiDienARN, DangKi, DanhSachTheoDoi, GioiThieu, Gmail, Link, SoNguoiDangKi, SoNguoiTheoDoi, TenKenh, TheLoaiMau, Tien, TieuDeMacDinh, TrangThai, NgaySinh) =>{
     try{
         const data_2 = await dynamodb.send(new UpdateItemCommand({
             Key:{
@@ -423,14 +426,18 @@ const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN, AnhDaiDienARN, DangKi,
                 },
             },
             ExpressionAttributeNames:{
-                "#A":"TrangThai"
+                "#A":"TrangThai",
+                "#B":"NgaySinh"
             },
             ExpressionAttributeValues:{
                 ":a":{
-                    "B":TrangThai
+                    "A":TrangThai
+                },
+                ":b":{
+                    "B":NgaySinh
                 }
             },
-            UpdateExpression:"SET #A= :a",
+            UpdateExpression:"SET #A= :a, #B = :b",
             TableName:"HoSoNguoiDung"
         }));
         console.log("Success")
@@ -442,7 +449,6 @@ const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN, AnhDaiDienARN, DangKi,
     }
 }
 //CRUD TheLoaiGame
-//
 const GetTheLoaiGame = async(Key) => {
     try{
         const data = await dynamodb.send(new GetItemCommand(
@@ -463,7 +469,6 @@ const GetTheLoaiGame = async(Key) => {
         console.log(err)
     }
 };
-//
 const CreateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
     try{
         const data = await dynamodb.send(new PutItemCommand({
@@ -492,7 +497,6 @@ const CreateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
         console.log(err)
     }
 }
-//
 const UpdateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
     try{
         const data = await dynamodb.send(new UpdateItemCommand({
@@ -524,7 +528,6 @@ const UpdateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
         console.log(err)
     }
 }
-//
 
 //CRUD LoiViPham
 const GetLoiViPham = async() =>{
@@ -546,7 +549,6 @@ const GetLoiViPham = async() =>{
         console.log(err)
     }
 }
-//
 const CreateLoiViPham = async(IDLoi, NoiDung) =>{
     try{
         const data = await dynamodb.send(new PutItemCommand(
@@ -574,25 +576,24 @@ const CreateLoiViPham = async(IDLoi, NoiDung) =>{
         console.log(err)
     }
 }
-//
 const UpdateLoiViPham = async(IDLoi, NoiDung) =>{
     try{
         const data = await dynamodb.send(new UpdateItemCommand({
             Key:{
                 "IDLoi":{
-                    "S":"IDLoi"
+                    "S":IDLoi
                 }
             },
             ExpressionAttributeNames:{
-                "#A":"NoiDung"
+                "#A":"ViPham"
             },
             ExpressionAttributeValues:{
                 ":a":{
-                    "S":NoiDung
+                    "L":NoiDung
                 }
             },
             UpdateExpression:"SET #A = :a",
-            TableName:"LoiViPham"
+            TableName:"BaoCaoViPham"
         }));
         console.log("Success");
         console.log(data)
@@ -602,9 +603,7 @@ const UpdateLoiViPham = async(IDLoi, NoiDung) =>{
         console.log(err)
     }
 }
-//
 //CRUD BaoCaoChoXuLi
-//
 const GetBaoCaoChoXuLi = async(ID) => {
     try{
         const data = await dynamodb.send(new GetItemCommand({
@@ -624,20 +623,17 @@ const GetBaoCaoChoXuLi = async(ID) => {
         console.log(err)
     }
 }
-//
-const CreateBaoCaoChoXuLi = async(ID_Stream, NoiDung, SoLan, StreamID) =>{
+const CreateBaoCaoChoXuLi = async(ID_Stream, ViPham) =>{
     try{
         const data = await dynamodb.send(new PutItemCommand({
             Item:{
                 "ID BaoCao":{
                     "S":ID_Stream
                 },
-                "ViPham":[
-                    {
-                        "ViPham":"L01",
-                        "SoLan":"2"
-                    }
-                ]
+                "ViPham":{
+                    "L":ViPham
+                }
+
             },
             TableName:"BaoCaoChoXuLi",
             ConditionExpression: "attribute_not_exists(#ID)",
@@ -653,20 +649,67 @@ const CreateBaoCaoChoXuLi = async(ID_Stream, NoiDung, SoLan, StreamID) =>{
         console.log(err)
     }
 }
-//
-const UpdateBaoCaoChoXuLi = async() =>{
+const UpdateBaoCaoChoXuLi = async(ID_BaoCao, ViPham) =>{
     try{
         const data = await dynamodb.send(new UpdateItemCommand({
             Key:{
-                "ID Loi":{
-                    "S":"sss"
+                "ID BaoCao":{
+                    "S":ID_BaoCao
+                }
+            },
+            ExpressionAttributeNames:{
+                "#A":"ViPham"
+            },
+            ExpressionAttributeValues:{
+                ":a":{
+                    "S":ViPham
+                }
+            },
+            UpdateExpression:"SET #A = :a",
+            TableName:"BaoCaoChoXuLi"
+        }));
+        console.log("Success");
+        console.log(data)
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+const DeleteBaoCaoChoXuLi = async(ID_BaoCao) =>{
+    try{
+        const data = await dynamodb.send(new DeleteItemCommand({
+            Key:{
+                "ID BaoCao":{
+                    "S":ID_BaoCao
                 }
             },
             TableName:"BaoCaoChoXuLi"
         }));
         console.log("Success")
         console.log(data)
-    }catch(err){
+    }
+    catch(err){
+        console.log("Error");
+        console.log(err)
+    }
+}
+//CRUD BienBanCamStreamer
+const GetBienBanCamStreamer = async() =>{
+    try{
+        const data = await dynamodb.send(new GetItemCommand({
+            "Key":{
+                "IDLoi":{
+                    "S":"L01"
+                }
+            }, 
+            "TableName":"LoiViPham"
+        }));
+        console.log("Success")
+        console.log(data)
+        return data;
+    }
+    catch(err){
         console.log("Error")
         console.log(err)
     }
@@ -783,8 +826,8 @@ const ChangePassword = async(PreviousPassword, ProposedPassword, AccessToken) =>
         console.log(data);
     }catch (err){
         console.log("Error")
-        console.log(err)
     }
+    
 }
 
 const {cognito_identify} = require("./libs/sampleClient.js");
@@ -832,6 +875,7 @@ const GetId = async(IdToken) => {
 const {PutObjectCommand} = require("@aws-sdk/client-s3");
 const e = require("express");
 const { compile } = require("ejs");
+const { resolve } = require("path");
 
 const UploadImageToS3 = async() =>{
     try{
@@ -848,12 +892,8 @@ const UploadImageToS3 = async() =>{
         console.log(err)
     }
 }
-
-
 module.exports = {GetChannel, CreateChannel, SignOut,
      GetStreamList, GetHoSoNguoiDung, CreateHoSoNguoiDung, 
      UpdateHoSoNguoiDung, SignUp, ConfirmSignUp,
      Login, ChangePassword, GetCredentialsForIdentity,
      GetId, UploadImageToS3, CreateTheLoaiGame, UpdateTheLoaiGame}
-
-CreateBaoCaoChoXuLi("123","")
