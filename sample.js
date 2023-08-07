@@ -2,8 +2,6 @@ const {ivs, s3} = require("./libs/sampleClient.js");
 const server = "rtmps://416fc24342ee.global-contribute.live-video.net:443/app/"
 // Hàm lấy channel
 
-const assert = require("assert");
-
 const {GetChannelCommand, StreamHealth} = require("@aws-sdk/client-ivs");
 
 const GetChannel = async (arn) => {
@@ -11,11 +9,9 @@ const GetChannel = async (arn) => {
         const data = await ivs.send(new GetChannelCommand({
             arn: arn
         }));
-        console.log("Success");
-        console.log(data)
         return data;
     } catch (err){
-        console.log("Error",err);
+        return err.message
     }
 };
 
@@ -28,12 +24,10 @@ const GetStreamKeyARN = async(channelArn) =>{
         const data = await ivs.send(new ListStreamKeysCommand({
             channelArn:channelArn
         }));
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const GetStreamKey = async(arn) =>{
@@ -41,12 +35,10 @@ const GetStreamKey = async(arn) =>{
         const data = await ivs.send(new GetStreamKeyCommand({
             arn:arn
         }));
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 
@@ -58,12 +50,9 @@ const GetChannelByName = async(TenDangNhap) =>{
         const data = await ivs.send(new ListChannelsCommand({
             filterByName:TenDangNhap
         }));
-        console.log("Sucess")
-        console.log(data)
         return data
     } catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 // Hàm tạo channel
@@ -77,11 +66,9 @@ const CreateChannel = async (name) =>{
             preset: "CONSTRAINED_BANDWIDTH_DELIVERY",
             recordingConfigurationArn:"arn:aws:ivs:ap-northeast-2:529876766707:recording-configuration/Lm0KLNiBHvxx"
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     } catch (err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 // Hàm lấy danh sách channel
@@ -95,11 +82,9 @@ const GetStreamList = async (health, maxResults) => {
             },
             maxResults: maxResults
         }));
-        console.log("Success");
-        console.log(data)
         return data;
     } catch (err){
-        console.log("Error",err);
+        return err.message
     }
 };
 //
@@ -123,11 +108,9 @@ const GetHoSoNguoiDung = async(Key) =>{
                 "TableName":"HoSoNguoiDung"
             }
         ));
-        console.log('Success');
-        console.log(data);
+        return data
     } catch (err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 };
 const CreateHoSoNguoiDung = async(TenDangNhap, Gmail, NgaySinh) =>{
@@ -191,10 +174,9 @@ const CreateHoSoNguoiDung = async(TenDangNhap, Gmail, NgaySinh) =>{
                 }
             }
         ));
-        console.log("Success")
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN,AnhDaiDienARN,DangKi,DanhSachTheoDoi,GioiThieu,
@@ -274,11 +256,10 @@ const UpdateHoSoNguoiDung = async(TenDangNhap, AnhBiaARN,AnhDaiDienARN,DangKi,Da
             TableName:"HoSoNguoiDung"
             
         }));
-        console.log("Success")
+        return data
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 //CRUD TheLoaiGame
@@ -294,12 +275,9 @@ const GetTheLoaiGame = async(Key) => {
                 "TableName":"TheLoaiGame"
             }
         ));
-        console.log('Success');
-        console.log(data);
         return data;
     } catch (err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 };
 const CreateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
@@ -322,8 +300,7 @@ const CreateTheLoaiGame = async(ID, TenGame, HinhARN) =>{
                 "#ID":"ID TL"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }
     catch(err){
         console.log("Error")
@@ -373,13 +350,10 @@ const GetLoiViPham = async() =>{
             }, 
             "TableName":"LoiViPham"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateLoiViPham = async(IDLoi, NoiDung) =>{
@@ -401,12 +375,10 @@ const CreateLoiViPham = async(IDLoi, NoiDung) =>{
                 }
             }
         ));
-        console.log("Success")
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 const UpdateLoiViPham = async(IDLoi, NoiDung) =>{
@@ -428,12 +400,10 @@ const UpdateLoiViPham = async(IDLoi, NoiDung) =>{
             UpdateExpression:"SET #A = :a",
             TableName:"BaoCaoViPham"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //CRUD BaoCaoChoXuLi
@@ -447,13 +417,10 @@ const GetBaoCaoChoXuLi = async(ID) => {
             }, 
             "TableName":"BaoCaoChoXuLi"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateBaoCaoChoXuLi = async(ID_Stream, ViPham) =>{
@@ -474,12 +441,10 @@ const CreateBaoCaoChoXuLi = async(ID_Stream, ViPham) =>{
                 "#ID":"ID BaoCao"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateBaoCaoChoXuLi = async(ID_BaoCao, ViPham) =>{
@@ -501,12 +466,10 @@ const UpdateBaoCaoChoXuLi = async(ID_BaoCao, ViPham) =>{
             UpdateExpression:"SET #A = :a",
             TableName:"BaoCaoChoXuLi"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 const DeleteBaoCaoChoXuLi = async(ID_BaoCao) =>{
@@ -519,12 +482,10 @@ const DeleteBaoCaoChoXuLi = async(ID_BaoCao) =>{
             },
             TableName:"BaoCaoChoXuLi"
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //CRUD BienBanCamStreamer
@@ -538,13 +499,10 @@ const GetBienBanCamStreamer = async() =>{
             }, 
             "TableName":"LoiViPham"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateBienBanCamStreamer = async(ID, DSLoiGhiNhan, MucAn, NhanVien, Streamer,
@@ -583,11 +541,9 @@ const CreateBienBanCamStreamer = async(ID, DSLoiGhiNhan, MucAn, NhanVien, Stream
                 "#ID":"ID BienBan"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateBienBanCamStreamer = async(ID, DSLoiGhiNhan, MucAn, NhanVien, Streamer, ThoiGian, ThoiGianKetThuc, VideoRecordARN) =>{
@@ -633,12 +589,10 @@ const UpdateBienBanCamStreamer = async(ID, DSLoiGhiNhan, MucAn, NhanVien, Stream
             UpdateExpression:"SET #A = :a, #B = :b, #C = :c, #D = :d, #E = :e, #F = :f, #G = :g",
             TableName:"BienBanCamStreamer"
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     } 
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const DeleteBienBanCamStreamer = async() =>{
@@ -651,12 +605,10 @@ const DeleteBienBanCamStreamer = async() =>{
             }, 
             TableName:"BienBanCamStreamer"
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 
 }
@@ -671,12 +623,10 @@ const GetDichVu = async(ID_DichVu) =>{
             }, 
             "TableName":"DichVu"
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateDichVu = async(ID_DichVu, GiaTien, TenDichVu) =>{
@@ -699,11 +649,9 @@ const CreateDichVu = async(ID_DichVu, GiaTien, TenDichVu) =>{
                 "#ID":"ID DichVu"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateDichVu = async(ID_DichVu, GiaTien, TenDichVu) =>{
@@ -729,12 +677,10 @@ const UpdateDichVu = async(ID_DichVu, GiaTien, TenDichVu) =>{
             UpdateExpression:"SET #A = :a, #B = :b",
             TableName:"DichVu"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //CRUD DoanhThuToanHeThong
@@ -748,13 +694,10 @@ const GetDoanhThuToanHeThong = async(ThoiGian) =>{
             }, 
             "TableName":"DoanhThuToanHeThong"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, TongTienVao)=>{
@@ -780,11 +723,9 @@ const CreateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, Tong
                 "#ID":"ThoiGian"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, TongTienVao)=>{
@@ -814,12 +755,10 @@ const UpdateDoanhThuToanHeThong = async(ThoiGian, TongDoanhThu, TongTienRa, Tong
             UpdateExpression:"SET #A = :a, #B = :b, #C = :c",
             TableName:"DoanhThuToanHeThong"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //CRUD LichSuGiaoDich
@@ -836,13 +775,10 @@ const GetLichSuGiaoDich = async(Streamer, ThoiGian) =>{
             }, 
             "TableName":"LichSuGiaoDich"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateLichSuGiaoDich = async(Streamer, ThoiGian, TenDichVu, LoaiGiaoDich, PayPal, SoTien) =>{
@@ -875,11 +811,9 @@ const CreateLichSuGiaoDich = async(Streamer, ThoiGian, TenDichVu, LoaiGiaoDich, 
                 "#TG":"ThoiGian"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateLichSuGiaoDich = async(Streamer,ThoiGian,BienLaiGiaoDich, LoaiGiaoDich, PayPal, SoTien) =>{
@@ -916,12 +850,10 @@ const UpdateLichSuGiaoDich = async(Streamer,ThoiGian,BienLaiGiaoDich, LoaiGiaoDi
             UpdateExpression:"SET #A = :a, #B = :b, #C = :c, #D = :d",
             TableName:"LichSuGiaoDich"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //CRUD LichSuQuanLi
@@ -938,13 +870,10 @@ const GetLichSuQuanLi = async(NhanVien, ThoiGian) =>{
             }, 
             "TableName":"LichSuQuanLi"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateLichSuQuanLi = async(NhanVien, ThoiGian, CongViecThucHien, DoiTuong) =>{
@@ -971,11 +900,9 @@ const CreateLichSuQuanLi = async(NhanVien, ThoiGian, CongViecThucHien, DoiTuong)
                 "#TG":"ThoiGian"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateLichSuQuanLi = async(NhanVien, ThoiGian, CongViecThucHien, DoiTuong) =>{
@@ -1004,8 +931,7 @@ const UpdateLichSuQuanLi = async(NhanVien, ThoiGian, CongViecThucHien, DoiTuong)
             UpdateExpression:"SET #A = :a, #B",
             TableName:"LichSuQuanLi"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
         console.log("Error");
@@ -1023,13 +949,10 @@ const GetStreamTable = async(ID_Stream) =>{
             }, 
             "TableName":"Stream"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateStreamTable = async(ID_Stream, Dodai, Donate, SoLuotXemTrungBinh, Streamer, TheLoai, TieuDe,TongLuotDangKiMoi, TongTienDonate) =>{
@@ -1070,11 +993,9 @@ const CreateStreamTable = async(ID_Stream, Dodai, Donate, SoLuotXemTrungBinh, St
                 "#ID":"ID Stream"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateStreamTable = async(ID_Stream, Dodai, Donate, SoLuotXemTrungBinh, Streamer, TheLoai, TieuDe,TongLuotDangKiMoi, TongTienDonate) =>{
@@ -1124,12 +1045,10 @@ const UpdateStreamTable = async(ID_Stream, Dodai, Donate, SoLuotXemTrungBinh, St
             TableName:"Stream"
         }
     }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //CRUD VideoRecord
@@ -1143,13 +1062,10 @@ const GetVideoRecord = async(ID_Stream) => {
             }, 
             "TableName":"VideoRecord"
         }));
-        console.log("Success")
-        console.log(data)
         return data;
     }
     catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const CreateVideoRecord = async(ID_Stream,SoLuotXemVideo,TieuDe,TrangThai,VideoARN) => {
@@ -1178,11 +1094,9 @@ const CreateVideoRecord = async(ID_Stream,SoLuotXemVideo,TieuDe,TrangThai,VideoA
                 "#ID":"ID Stream"
             }
         }));
-        console.log("Success")
-        console.log(data)
+        return data
     }catch(err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
 const UpdateVideoRecord = async(ID_Stream,SoLuotXemVideo,TieuDe,TrangThai,VideoARN) => {
@@ -1216,12 +1130,10 @@ const UpdateVideoRecord = async(ID_Stream,SoLuotXemVideo,TieuDe,TrangThai,VideoA
             UpdateExpression:"SET #A = :a, #B = :b, #C = :c, #D = :d",
             TableName:"VideoRecord"
         }));
-        console.log("Success");
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
 //
@@ -1258,11 +1170,9 @@ const SignUp = async(Username, Password, email, birthdate, name) => {
                 ]
             }
         ));
-        console.log('Success');
-        console.log(data);
+        return data
     }catch (err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 };
 //Sign Out
@@ -1274,14 +1184,12 @@ const SignOut = async (AccessToken) => {
         const data = await cognito_identify_provider.send(new GlobalSignOutCommand({
             AccessToken: AccessToken
         }));
+        return data
     }
     catch(err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 }
-//SignUp(TenDangNhap, MatKhau, "nghiemgankteam@gmail.com", "04-09-2003", "NghiemVipProPlayer")
-
 const {ConfirmSignUpCommand} = require("@aws-sdk/client-cognito-identity-provider")
 
 const ConfirmSignUp = async(Username, ConfirmationCode) => {
@@ -1293,11 +1201,9 @@ const ConfirmSignUp = async(Username, ConfirmationCode) => {
                 ConfirmationCode: ConfirmationCode,
             }
         ));
-        console.log('Success');
-        console.log(data);
+        return data
     }catch (err){
-        console.log("Error");
-        console.log(err)
+        return err.message
     }
 };
 // Đăng nhập
@@ -1313,12 +1219,9 @@ const Login = async(UserName, Password) => {
             },
             ClientId: ClientId
         }));
-        console.log('Success');
-        console.log(data);
         return data.AuthenticationResult
     }catch (err){
-        console.log("Error");
-        console.log(err)
+        err.message
     }
 };
 
@@ -1332,10 +1235,9 @@ const ChangePassword = async(PreviousPassword, ProposedPassword, AccessToken) =>
             ProposedPassword: ProposedPassword,
             AccessToken: AccessToken
         }));
-        console.log("Success");
-        console.log(data);
+        return data
     }catch (err){
-        console.log("Error")
+        return err.message
     }
     
 }
@@ -1346,10 +1248,10 @@ const ForgotPassword = async(UserName) =>{
             ClientId:ClientId,
             Username:UserName
         }));
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log(err)
+        return err.message
     }
 }
 const {ConfirmForgotPasswordCommand} = require("@aws-sdk/client-cognito-identity-provider")
@@ -1362,13 +1264,12 @@ const ConfirmForgotPassword = async(UserName, ConfirmationCode, Password) =>{
             ConfirmationCode:ConfirmationCode,
             Password:Password
         }));
-        console.log(data)
+        return data
     }
     catch(err){
-        console.log(err)
+        return err.message
     }
 }
-ConfirmForgotPassword("nghiemsp123", "098146","AlanTuring49")
 const {cognito_identify} = require("./libs/sampleClient.js");
 
 const {GetCredentialsForIdentityCommand} = require("@aws-sdk/client-cognito-identity")
@@ -1426,16 +1327,25 @@ const UploadImageToS3 = async(imageFile, imageFileName, MineType) =>{
             Key:imageFileName,
             ContentType: MineType
         }));
-        console.log("Success")
-        console.log(data)       
+        return data
     }
     catch (err){
-        console.log("Error")
-        console.log(err)
+        return err.message
     }
 }
-module.exports = {GetChannel, CreateChannel, SignOut,
-     GetStreamList, GetHoSoNguoiDung, CreateHoSoNguoiDung, 
-     UpdateHoSoNguoiDung, SignUp, ConfirmSignUp,
-     Login, ChangePassword, GetCredentialsForIdentity,
-     GetId, UploadImageToS3, CreateTheLoaiGame, UpdateTheLoaiGame}
+const {GetObjectCommand} = require("@aws-sdk/client-s3");
+const {getSignedUrl} = require("@aws-sdk/s3-request-presigner");
+const GetObjectS3 = async ()=>{
+    try{
+        const data = await getSignedUrl(s3, new GetObjectCommand({
+            Bucket:"projectlivestreamdb",
+            Key:"Sangtraan Nhảy (weekend has come remix) #short #remix #meme.mp4"
+        }),{expiresIn: 60 * 60 * 24})
+        return data
+    }
+    catch(err){
+        return err.message
+    }
+}
+module.exports = {GetChannel, GetStreamKeyARN, GetStreamKeyARN, GetStreamKey, GetChannelByName, CreateChannel, GetStreamList, GetHoSoNguoiDung, UpdateHoSoNguoiDung, GetTheLoaiGame, CreateTheLoaiGame, UpdateTheLoaiGame, GetLoiViPham, CreateLoiViPham, UpdateLoiViPham, GetBaoCaoChoXuLi, CreateBaoCaoChoXuLi, UpdateBaoCaoChoXuLi, DeleteBaoCaoChoXuLi, GetBienBanCamStreamer, CreateBienBanCamStreamer, UpdateBienBanCamStreamer, DeleteBienBanCamStreamer, GetDichVu, CreateDichVu, UpdateDichVu, GetDoanhThuToanHeThong, CreateDoanhThuToanHeThong, UpdateDoanhThuToanHeThong, GetLichSuGiaoDich, CreateLichSuGiaoDich,
+UpdateLichSuGiaoDich, GetLichSuQuanLi, CreateLichSuQuanLi, UpdateLichSuQuanLi, GetStreamTable, CreateStreamTable, UpdateStreamTable, GetVideoRecord, CreateVideoRecord, UpdateVideoRecord, SignUp, SignOut, ConfirmSignUp, Login, ChangePassword, ForgotPassword, ConfirmForgotPassword, UploadImageToS3, GetObjectS3, server}
