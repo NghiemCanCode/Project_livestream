@@ -303,3 +303,7 @@ html {
   input[type=number] {
     -moz-appearance: textfield;
   }
+  .text-danger{
+    color: red;
+    font-size: 15px;
+  }

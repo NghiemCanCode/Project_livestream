@@ -460,6 +460,41 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Stream key -->
+                                <h2 class="mt-30">Stream</h2>   
+                                <% if(streamkey && server){ %>
+                                    <div class="mt-8"
+                                    style="width: 700px; height: auto; background-color: #fff; border-radius: 10px;">
+                                    <div style="padding: 20px 40px;">
+                                        <div>
+                                            <div
+                                                class="d-flex row align-item-center justify-content-between w-100 mt-10">
+                                                <h3 class="l-2" style="margin: 0; text-align: left;">Stream key
+                                                </h3>
+                                                <div class="l-10">
+                                                    <div><%= streamkey %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-8"
+                                    style="width: 700px; height: auto; background-color: #fff; border-radius: 10px;">
+                                    <div style="padding: 20px 40px;">
+                                        <div>
+                                            <div
+                                                class="d-flex row align-item-center justify-content-between w-100 mt-10">
+                                                <h3 class="l-2" style="margin: 0; text-align: left;">Ingest Server
+                                                </h3>
+                                                <div class="l-10">
+                                                    <div ><%= server %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%} %>                      
+                                
                             </div>
                         </div>
                     </div>
@@ -660,7 +695,9 @@
                         <div class="mt-8">
                             <h2>Thanh toán bằng</h2>
                             <div class="d-flex justify-content-between">
-                                <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">Paypal</button>
+                                <form action="/pay" method="post" class="btn" style=" width: 48%; color: #fff;">
+                                    <input style="width: 234px; height: 34px; background-color: #f90; border: #f90;" type="submit" value="PayPal">
+                                </form>
                                 <button class="btn" style="width: 48%; background-color: #89898b;">Trở lại</button>
                             </div>
                         </div>

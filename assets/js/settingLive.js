@@ -9,8 +9,10 @@ const btnSetting = document.getElementById('settingLive')
 const settingsMenu = document.getElementById("settings-menu");
 const mainLive = document.getElementById('videoLive')
 const player = IVSPlayer.create();
+const playbackURL = document.getElementById('playbackURL')
+
 player.attachHTMLVideoElement(document.getElementById('video-player'));
-player.load("https://416fc24342ee.ap-northeast-2.playback.live-video.net/api/video/v1/ap-northeast-2.529876766707.channel.eyUQA0x3981w.m3u8");
+player.load(playbackURL.value);
 player.play();
 // player.setVolume(1.0);
 // player.setMuted(false);
@@ -34,7 +36,13 @@ player.play();
 //         `Player Event - TEXT_METADATA_CUE: "${metadataText}". Observed ${position}s after playback started.`
 //     );
 // });
-  
+// const chatForm= document.querySelector('#chat-form');
+// const chatMess= document.querySelector('#chat-mess');
+// chatForm.addEventListener(, (e)=>{
+//   e.preventDefault();
+//   const msg =chatMess.value
+//   socket.emit('on-chat',{msg: msg})
+// });
 btnPlay.addEventListener('click', function () {
     btnPlay.style.display = 'none';
     btnPause.style.display = 'block';
