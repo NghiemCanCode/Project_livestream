@@ -1335,11 +1335,11 @@ const UploadImageToS3 = async(imageFile, imageFileName, MineType) =>{
 }
 const {GetObjectCommand} = require("@aws-sdk/client-s3");
 const {getSignedUrl} = require("@aws-sdk/s3-request-presigner");
-const GetObjectS3 = async ()=>{
+const GetObjectS3 = async (Key)=>{
     try{
         const data = await getSignedUrl(s3, new GetObjectCommand({
             Bucket:"projectlivestreamdb",
-            Key:"Sangtraan Nhảy (weekend has come remix) #short #remix #meme.mp4"
+            Key:Key
         }),{expiresIn: 60 * 60 * 24})
         return data
     }
