@@ -14,6 +14,19 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/grid.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <style>
+        label{
+            display: block;
+            width: 150px;
+            background-color:#dcdcdd;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #input-file{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -362,11 +375,13 @@
                                             style="width: 96px; height: 96px; border-radius: 50%;" alt="">
                                         <div class="ml-10 mt-8">
                                             <div>
-                                                <button class="btn mb-5"
-                                                    style="background-color: #ededef; color: #0e0e10;">Thêm
-                                                    Ảnh đại diện</button>
+                                                <form action="/updateimg" method="post" enctype="multipart/form-data">
+                                                    <label for="input-file">Cập nhật ảnh hồ sơ</label>
+                                                    <input type="file" accept="image/JPEG, image/png, image/jpg" id="input-file" name="img" >
+                                                    <button type="submit">Submit</button>
+                                                </form>
                                             </div>
-                                            <span>Phải là JPEG, PNG hoặc GIF.</span>
+                                            <span>Phải là JPEG, PNG hoặc jpg.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -625,7 +640,7 @@
                         <div class="mt-10">
                             <div class="d-flex justify-content-between">
                                 <!-- <span>Bạn có Anna Gift Card không ? <span style="color: var(--primary-color-2);">Hãy
-                                        quy đổi ngay</span> </span> -->
+                                        quy đảnhổi ngay</span> </span> -->
                                 <div class="d-flex">
                                     <span style="font-weight: 550;">Tổng cộng đã bao gồm VAT
                                     </span>
@@ -636,7 +651,9 @@
                         <div class="mt-8">
                             <h2>Thanh toán bằng</h2>
                             <div class="d-flex justify-content-between">
-                                <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">Paypal</button>
+                                <form action="/pay" method="post" class="btn" style=" width: 48%; color: #fff;">
+                                    <input style="width: 234px; height: 34px; background-color: #f90; border: #f90;" type="submit" value="PayPal">
+                                </form>
                                 <button class="btn" style="width: 48%; background-color: #89898b;">Trở lại</button>
                             </div>
                         </div>

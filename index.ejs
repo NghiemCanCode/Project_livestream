@@ -323,429 +323,97 @@
                     <div id="contentLayout2_10" class="col l-10 content-fixed" style="padding-bottom: 100px;">
                         <div class="home-product">
                             <div style="font-weight: bolder; margin-top: 8px; font-size: 12px;">
-                                Các kênh <span style="color: var(--primary-color-2);">Diablo IV</span> được đề xuất
+                                Các kênh
+                                 <!-- <span style="color: var(--primary-color-2);">Diablo IV</span>  -->
+                                 được đề xuất
                                 
                             </div>
-                            <div class="row sm-gutters">
-                                <div class="col l-2-4">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
+                            <% if(streamers){ %>
+                                <% streamers.forEach((x) => {%>
+                                    <div class="row sm-gutters">
+                                        <div class="col l-2-4">
+                                            <!-- product item -->
+                                            <a href="/live/<%= x.name %>" class="home-product-item">
+                                                <img style="width: 100%; height: 170px;" class="img-live-style"
+                                                    src="/img/live1.jpg" alt="">
+    
+                                                <div style="display: flex; margin-top: 8px;">
+                                                    <img src="/img/img_cat1.png" class="style-img-live" alt="">
+                                                    <div class="ml-5" style="width: 100%;">
+                                                        <div
+                                                            style="display: flex; justify-content: space-between; width: 100%;">
+                                                            <span class="restyle-p ml-5 header__cart-item-name"
+                                                                style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                                DROPS KAKKAKAK AKAOAIAIAOSIGAGA
+                                                            </span>
+                                                            <i style="margin-right: 8px;"
+                                                                class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </div>
+                                                        <p class="ml-5 restyle-p mt-3"><%= x.name %></p>
+                                                        <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                    </div>
                                                 </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
+        
+                                                <div class="home-product-item__favourite">
+                                                    <span>LIVE</span>
                                                 </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
+                                            </a>
                                         </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- <div class="row">
-                                <div class="c-12 mt-8"
-                                    style="display: flex; justify-content: center; align-items: center;">
-                                    <span style="color: var(--primary-color-2); cursor: pointer; font-size: 12px;">Show
-                                        more</span>
-                                    <i class="fa-solid fa-angle-down ml-5"
-                                        style="margin-top: 3px; color: var(--primary-color-2);"></i>
-                                </div>
-                            </div> -->
+                                    </div>
+                                <%}) %>
+                            <%}else {%>
+                                <div class="row sm-gutters">
+                                    <div style="text-align: center;" class="col l-12">
+                                        <h3>Hiện không có stremer trực tuyến </h3>
+                                    </div>
+                            <%} %>
 
                             <!-- 2 -->
+                            
                             <div style="margin-top: 40px;">
                                 <div style="font-weight: bolder; margin-top: 8px; font-size: 12px;">
                                     <span style="color: var(--primary-color-2);">Chương trình truyền trực tiếp về Diablo
                                         IV
                                         vừa phát hành gần đây</span>
                                 </div>
+                            <% if(streamers){ %>
+                                <% streamers.forEach((x) => {%>
+                                    <div class="row sm-gutters">
+                                        <div class="col l-2-4">
+                                            <!-- product item -->
+                                            <a href="/live/<%= x.name %>" class="home-product-item">
+                                                <img style="width: 100%; height: 170px;" class="img-live-style"
+                                                    src="/img/live1.jpg" alt="">
+    
+                                                <div style="display: flex; margin-top: 8px;">
+                                                    <img src="/img/img_cat1.png" class="style-img-live" alt="">
+                                                    <div class="ml-5" style="width: 100%;">
+                                                        <div
+                                                            style="display: flex; justify-content: space-between; width: 100%;">
+                                                            <span class="restyle-p ml-5 header__cart-item-name"
+                                                                style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                                DROPS KAKKAKAK AKAOAIAIAOSIGAGA
+                                                            </span>
+                                                            <i style="margin-right: 8px;"
+                                                                class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </div>
+                                                        <p class="ml-5 restyle-p mt-3"><%= x.name %></p>
+                                                        <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="home-product-item__favourite">
+                                                    <span>LIVE</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                <%}) %>
+                            <%}else {%>
                                 <div class="row sm-gutters">
-                                    <div class="col l-2-4 m-4 c-6">
-                                        <!-- product item -->
-                                        <a href="##" class="home-product-item">
-                                            <!-- <div class="home-product-item__img"
-                                                style="background-image: url(/assets/img/live1.jpg);">
-                                            </div> -->
-
-                                            <img style="width: 100%; height: 170px;" class="img-live-style"
-                                                src="/img/live1.jpg" alt="">
-
-                                            <div style="display: flex; margin-top: 8px;">
-                                                <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                                <div class="ml-5" style="width: 100%;">
-                                                    <div
-                                                        style="display: flex; justify-content: space-between; width: 100%;">
-                                                        <span class="restyle-p ml-5 header__cart-item-name"
-                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA kkkkkk
-                                                        </span>
-                                                        <i style="margin-right: 8px;"
-                                                            class="fa-solid fa-ellipsis-vertical"></i>
-                                                    </div>
-                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                    <!-- <div class="mt-3 mb-5">
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                            English
-                                                        </span>
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                            DropsEnabled
-                                                        </span>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <span>LIVE</span>
-                                            </div>
-                                        </a>
+                                    <div style="text-align: center;" class="col l-12">
+                                        <h3>Hiện không có stremer trực tuyến </h3>
                                     </div>
-
-                                    <div class="col l-2-4 m-4 c-6">
-                                        <!-- product item -->
-                                        <a href="##" class="home-product-item">
-                                            <!-- <div class="home-product-item__img"
-                                                style="background-image: url(/assets/img/live1.jpg);">
-                                            </div> -->
-
-                                            <img style="width: 100%; height: 170px;" class="img-live-style"
-                                                src="/img/live1.jpg" alt="">
-
-                                            <div style="display: flex; margin-top: 8px;">
-                                                <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                                <div class="ml-5" style="width: 100%;">
-                                                    <div
-                                                        style="display: flex; justify-content: space-between; width: 100%;">
-                                                        <span class="restyle-p ml-5 header__cart-item-name"
-                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                        </span>
-                                                        <i style="margin-right: 8px;"
-                                                            class="fa-solid fa-ellipsis-vertical"></i>
-                                                    </div>
-                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                    <!-- <div class="mt-3 mb-5">
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                            English
-                                                        </span>
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                            DropsEnabled
-                                                        </span>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <span>LIVE</span>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col l-2-4 m-4 c-6">
-                                        <!-- product item -->
-                                        <a href="##" class="home-product-item">
-                                            <!-- <div class="home-product-item__img"
-                                                style="background-image: url(/assets/img/live1.jpg);">
-                                            </div> -->
-
-                                            <img style="width: 100%; height: 170px;" class="img-live-style"
-                                                src="/img/live1.jpg" alt="">
-
-                                            <div style="display: flex; margin-top: 8px;">
-                                                <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                                <div class="ml-5" style="width: 100%;">
-                                                    <div
-                                                        style="display: flex; justify-content: space-between; width: 100%;">
-                                                        <span class="restyle-p ml-5 header__cart-item-name"
-                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                        </span>
-                                                        <i style="margin-right: 8px;"
-                                                            class="fa-solid fa-ellipsis-vertical"></i>
-                                                    </div>
-                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                    <!-- <div class="mt-3 mb-5">
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                            English
-                                                        </span>
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                            DropsEnabled
-                                                        </span>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <span>LIVE</span>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col l-2-4 m-4 c-6">
-                                        <!-- product item -->
-                                        <a href="##" class="home-product-item">
-                                            <!-- <div class="home-product-item__img"
-                                                style="background-image: url(/assets/img/live1.jpg);">
-                                            </div> -->
-
-                                            <img style="width: 100%; height: 170px;" class="img-live-style"
-                                                src="/img/live1.jpg" alt="">
-
-                                            <div style="display: flex; margin-top: 8px;">
-                                                <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                                <div class="ml-5" style="width: 100%;">
-                                                    <div
-                                                        style="display: flex; justify-content: space-between; width: 100%;">
-                                                        <span class="restyle-p ml-5 header__cart-item-name"
-                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                        </span>
-                                                        <i style="margin-right: 8px;"
-                                                            class="fa-solid fa-ellipsis-vertical"></i>
-                                                    </div>
-                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                    <!-- <div class="mt-3 mb-5">
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                            English
-                                                        </span>
-                                                        <span class="pl-r-4"
-                                                            style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                            DropsEnabled
-                                                        </span>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <span>LIVE</span>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col l-2-4 m-4 c-6">
-                                        <!-- product item -->
-                                        <a href="##" class="home-product-item">
-                                            <img style="width: 100%; height: 170px;" class="img-live-style"
-                                                src="/img/live1.jpg" alt="">
-
-                                            <div style="display: flex; margin-top: 8px;">
-                                                <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                                <div class="ml-5" style="width: 100%;">
-                                                    <div
-                                                        style="display: flex; justify-content: space-between; width: 100%;">
-                                                        <span class="restyle-p ml-5 header__cart-item-name"
-                                                            style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                            DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                        </span>
-                                                        <i style="margin-right: 8px;"
-                                                            class="fa-solid fa-ellipsis-vertical"></i>
-                                                    </div>
-                                                    <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                    <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <span>LIVE</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                            <%} %>
                                 </div>
                             </div>
                         </div>
@@ -756,109 +424,233 @@
     </div>
 
     <!-- modal layout -->
-    <div class="modal js-modal">
-        <div class="modal__overlay js-modal__overlay"></div>
-
-        <div class="modal__body js-modal__body">
-            <!-- Form regitser -->
-            <div class="auth-form js-auth-form">
-                <div class="auth-form__container">
-                    <form action="/createNewUser" method="post">
-                        <div class="auth-form__header">
-                            <h3 class="auth-form__heading">Đăng ký</h3>
-                            <span id="redirectLogin" class="auth-form__switch-btn">Đăng nhập</span>
-                        </div>
-
-                        <div class="auth-form__form">
-                            <div class="auth-form__group">
-                                <input type="text" class="auth-form__input" placeholder="Enter name" name="name">
+    <% if(errors){ %>
+        <div class="modal js-modal" style="display: block;" >
+            <div class="modal__overlay js-modal__overlay"></div>
+    
+            <div class="modal__body js-modal__body">
+                <!-- Form regitser -->
+                <% if(errors.name || errors.password || errors.wronglogin){ %>
+                    <!-- Form login -->
+                <div class="auth-form js-auth-form" style="display: block;">
+                    <div class="auth-form__container">
+                        <form action="/Login" method="post">
+                            <div class="auth-form__header">
+                                <h3 class="auth-form__heading">Đăng nhập</h3>
+                                <span id="redirectRegister" class="auth-form__switch-btn">Đăng ký</span>
                             </div>
-                            <div class="auth-form__group">
-                                <input id="email" type="text" class="auth-form__input" placeholder="Enter email" name="email">
+                            <% if(errors.wronglogin){ %>
+                                <span class="text-danger"><%= errors.wronglogin.msg %></span>
+                            <%} %> 
+                            <div class="auth-form__form">
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Enter name" name="name">
+                                    <% if(errors.name){ %>
+                                        <span class="text-danger"><%= errors.name.msg %></span>
+                                    <%} %> 
+                                    
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password" name="password">
+                                    <% if(errors.password){ %>
+                                        <span class="text-danger"><%= errors.password.msg %></span>
+                                    <%} %> 
+                                </div>
                             </div>
-                            <div class="auth-form__group">
-                                <input type="password" class="auth-form__input" placeholder="Enter password" name="password">
+    
+                            <div class="auth-form__aside">
+                                <div class="auth-form__help">
+                                    <a id="forgotPassword" href="##" class="auth-form__help-link auth-form__help-forgot">Quên
+                                        mật khẩu</a>
+                                    <span class="auth-form__help-separate"></span>
+                                    <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                                </div>
                             </div>
-                            <div class="auth-form__group">
-                                <input type="password" class="auth-form__input" placeholder="Enter password again" name="confirmPassword">
+    
+                            <div class="auth-form__controls">
+                                <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">TRỞ LẠI</button>
+                                <button id="login" type="submit" class="btn btn--primary">ĐĂNG NHẬP</button>
                             </div>
-                            <div class="auth-form__group">
-                                <input type="date" class="auth-form__input" placeholder="Enter Birthday " name="birth">
-                            </div>
-                        </div>
-
-                        <div class="auth-form__aside">
-                            <p class="auth-form__policy-text">
-                                Bạn đồng ý với Anna về
-                                <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
-                                <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
-                            </p>
-                        </div>
-
-                        <div class="auth-form__controls">
-                            <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">Trở lại</button>
-                            <button type="submit" id="register" class="btn btn--primary">Đăng ký</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <!-- Form login -->
-            <div class="auth-form js-auth-form">
-                <div class="auth-form__container">
-                    <form action="/Login" method="post">
-                        <div class="auth-form__header">
-                            <h3 class="auth-form__heading">Đăng nhập</h3>
-                            <span id="redirectRegister" class="auth-form__switch-btn">Đăng ký</span>
+                <%} else{ %>
+                    <div class="auth-form js-auth-form" style="display: block;">
+                        <div class="auth-form__container">
+                            <form action="/createNewUser" method="post">
+                                <div class="auth-form__header">
+                                    <% if(errors && errors.userexist){ %>
+                                        <span class="text-danger"><%= errors.userexist.msg %></span>
+                                    <% } %>
+                                    <h3 class="auth-form__heading">Đăng ký</h3>
+                                    <span id="redirectLogin" class="auth-form__switch-btn">Đăng nhập</span>
+                                </div>
+        
+                                <div class="auth-form__form">
+                                    <div class="auth-form__group">
+                                        <input type="text" class="auth-form__input" placeholder="Enter name" name="nameRegister">
+                                        <% if(errors && errors.nameRegister){ %>
+                                            <span class="text-danger"><%= errors.nameRegister.msg %></span>
+                                        <% } %>
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input id="email" type="text" class="auth-form__input" placeholder="Enter email" name="email">
+                                        <% if(errors && errors.email){ %>
+                                            <span class="text-danger"><%= errors.email.msg %></span>
+                                        <% } %>
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input type="password" class="auth-form__input" placeholder="Enter password" name="passwordRegister">
+                                        <% if(errors && errors.passwordRegister){ %>
+                                            <span class="text-danger"><%= errors.passwordRegister.msg %></span>
+                                        <% } %>
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input type="password" class="auth-form__input" placeholder="Enter password again" name="confirmPassword">
+                                        <% if(errors && errors.confirmPassword){ %>
+                                            <span class="text-danger"><%= errors.confirmPassword.msg %></span>
+                                        <% } %>
+                                    </div>
+                                    <div class="auth-form__group">
+                                        <input type="date" class="auth-form__input" placeholder="Enter Birthday " name="birth">
+                                        <% if(errors && errors.birth){ %>
+                                            <span class="text-danger"><%= errors.birth.msg %></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+        
+                                <div class="auth-form__aside">
+                                    <p class="auth-form__policy-text">
+                                        Bạn đồng ý với Anna về
+                                        <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                                        <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                                    </p>
+                                </div>
+        
+                                <div class="auth-form__controls">
+                                    <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">Trở lại</button>
+                                    <button type="submit" id="register" class="btn btn--primary">Đăng ký</button>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="auth-form__form">
-                            <div class="auth-form__group">
-                                <input type="text" class="auth-form__input" placeholder="Enter name" name="name">
-                                <% if(errors && errors.name){ %>
-                                    <span class="text-danger"><%= errors.name.msg %></span>
-                                <%} %> 
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="password" class="auth-form__input" placeholder="Enter password" name="password">
-                                <% if(errors && errors.password){ %>
-                                    <span class="text-danger"><%= errors.password.msg %></span>
-                                <%} %> 
-                            </div>
-                        </div>
-
-                        <div class="auth-form__aside">
-                            <div class="auth-form__help">
-                                <a id="forgotPassword" href="##" class="auth-form__help-link auth-form__help-forgot">Quên
-                                    mật khẩu</a>
-                                <span class="auth-form__help-separate"></span>
-                                <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
-                            </div>
-                        </div>
-
-                        <div class="auth-form__controls">
-                            <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">TRỞ LẠI</button>
-                            <button id="login" type="submit" class="btn btn--primary">ĐĂNG NHẬP</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- <div class="auth-form__socials">
-                    <a href="" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
-                        <i class="auth-form__socials-icon fa-brands fa-facebook-square"></i>
-                        <span class="auth-form__socials-title">
-                            Kết nối vs Facebook
-                        </span>
-                    </a>
-                    <a href="" class="auth-form__socials--google btn btn--size-s btn--width-icon">
-                        <i class="auth-form__socials-icon fa-brands fa-google"></i>
-                        <span class="auth-form__socials-title">
-                            Kết nối vs Google
-                        </span>
-                    </a>
-                </div> -->
+                    </div>
+                <%} %>
             </div>
         </div>
-    </div>
+    <%} else{ %>
+        <div class="modal js-modal">
+            <div class="modal__overlay js-modal__overlay"></div>
+    
+            <div class="modal__body js-modal__body">
+                <!-- Form regitser -->
+                <div class="auth-form js-auth-form">
+                    <div class="auth-form__container">
+                        <form action="/createNewUser" method="post">
+                            <div class="auth-form__header">
+                                
+
+                                
+                                <h3 class="auth-form__heading">Đăng ký</h3>
+                                <span id="redirectLogin" class="auth-form__switch-btn">Đăng nhập</span>
+                            </div>
+    
+                            <div class="auth-form__form">
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Enter name" name="nameRegister">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input id="email" type="text" class="auth-form__input" placeholder="Enter email" name="email">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password" name="passwordRegister">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password again" name="confirmPassword">
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="date" class="auth-form__input" placeholder="Enter Birthday " name="birth">
+                                </div>
+                            </div>
+    
+                            <div class="auth-form__aside">
+                                <p class="auth-form__policy-text">
+                                    Bạn đồng ý với Anna về
+                                    <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                                    <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                                </p>
+                            </div>
+    
+                            <div class="auth-form__controls">
+                                <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">Trở lại</button>
+                                <button type="submit" id="register" class="btn btn--primary">Đăng ký</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Form login -->
+                <div class="auth-form js-auth-form">
+                    <div class="auth-form__container">
+                        <form action="/Login" method="post">
+                            <div class="auth-form__header">
+                                <h3 class="auth-form__heading">Đăng nhập</h3>
+                                <span id="redirectRegister" class="auth-form__switch-btn">Đăng ký</span>
+                            </div>
+                            <% if(errors && errors.wronglogin){ %>
+                                <span><%= errors %></span>
+                                <span><%= errors.wronglogin %></span>
+                                <span class="text-danger"><%= errors.wronglogin.msg %></span>
+                            <%} %> 
+                            <div class="auth-form__form">
+                                <div class="auth-form__group">
+                                    <input type="text" class="auth-form__input" placeholder="Enter name" name="name">
+                                    <% if(errors && errors.name){ %>
+                                        <span class="text-danger"><%= errors.name.msg %></span>
+                                    <%} %> 
+                                    
+                                </div>
+                                <div class="auth-form__group">
+                                    <input type="password" class="auth-form__input" placeholder="Enter password" name="password">
+                                    <% if(errors && errors.password){ %>
+                                        <span class="text-danger"><%= errors.password.msg %></span>
+                                    <%} %> 
+                                </div>
+                            </div>
+    
+                            <div class="auth-form__aside">
+                                <div class="auth-form__help">
+                                    <a id="forgotPassword" href="##" class="auth-form__help-link auth-form__help-forgot">Quên
+                                        mật khẩu</a>
+                                    <span class="auth-form__help-separate"></span>
+                                    <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                                </div>
+                            </div>
+    
+                            <div class="auth-form__controls">
+                                <button id="js-modal-btn-back" class="btn auth-form__controls-back btn-normal">TRỞ LẠI</button>
+                                <button id="login" type="submit" class="btn btn--primary">ĐĂNG NHẬP</button>
+                            </div>
+                        </form>
+                    </div>
+    
+                    <!-- <div class="auth-form__socials">
+                        <a href="" class="auth-form__socials--facebook btn btn--size-s btn--width-icon">
+                            <i class="auth-form__socials-icon fa-brands fa-facebook-square"></i>
+                            <span class="auth-form__socials-title">
+                                Kết nối vs Facebook
+                            </span>
+                        </a>
+                        <a href="" class="auth-form__socials--google btn btn--size-s btn--width-icon">
+                            <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                            <span class="auth-form__socials-title">
+                                Kết nối vs Google
+                            </span>
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    <% } %> 
+    
 
     <div id="modalBits" class="modal-package-register">
         <div class="modal-content-package-register content-fixed">
@@ -894,8 +686,11 @@
                 <div class="d-flex justify-content-between">
                     <!-- <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">
                         Paypal</button> -->
-                    <form action="/pay" method="post" class="btn" style="background-color: #f90; width: 48%; color: #fff;">
+                    <!-- <form action="/pay" method="post" class="btn" style="background-color: #f90; width: 48%; color: #fff;">
                         <input type="submit" value="PayPal">
+                    </form> -->
+                    <form action="/pay" method="post" class="btn" style=" width: 48%; color: #fff;">
+                        <input style="width: 234px; height: 34px; background-color: #f90; border: #f90;" type="submit" value="PayPal">
                     </form>
                     <button class="btn" style="width: 48%; background-color: #89898b;">Trở lại
                     </button>
@@ -929,7 +724,6 @@
             </form>
         </div>
     </div>
-    
     <script src="/js/index.js"></script>
     <script src="./index.js"></script>
     <script src="./polly.js"></script>

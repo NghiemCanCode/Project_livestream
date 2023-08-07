@@ -320,222 +320,44 @@
                             <div style="font-weight: bolder; font-size: 16px;">
                                 Kênh đang theo dõi
                             </div>
-                            <div class="row sm-gutters">
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="live.html" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
+                            <% if(streamers){ %>
+                                <% streamers.forEach((x) => {%>
+                                    <div class="row sm-gutters">
+                                        <div class="col l-2-4">
+                                            <!-- product item -->
+                                            <a href="/live/<%= x.name %>" class="home-product-item">
+                                                <img style="width: 100%; height: 170px;" class="img-live-style"
+                                                    src="/img/live1.jpg" alt="">
+    
+                                                <div style="display: flex; margin-top: 8px;">
+                                                    <img src="/img/img_cat1.png" class="style-img-live" alt="">
+                                                    <div class="ml-5" style="width: 100%;">
+                                                        <div
+                                                            style="display: flex; justify-content: space-between; width: 100%;">
+                                                            <span class="restyle-p ml-5 header__cart-item-name"
+                                                                style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                                DROPS KAKKAKAK AKAOAIAIAOSIGAGA
+                                                            </span>
+                                                            <i style="margin-right: 8px;"
+                                                                class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </div>
+                                                        <p class="ml-5 restyle-p mt-3"><%= x.name %></p>
+                                                        <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                    </div>
                                                 </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
+        
+                                                <div class="home-product-item__favourite">
+                                                    <span>LIVE</span>
                                                 </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
+                                            </a>
                                         </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                                <%}) %>
+                            <%}else {%>
+                                <div class="row sm-gutters">
+                                    <div style="text-align: center;" class="col l-12">
+                                        <h3>Hiện không có stremer trực tuyến </h3>
+                                    </div>
+                            <%} %>
                             <!-- <div class="row">
                                 <div class="c-12 mt-8"
                                     style="display: flex; justify-content: center; align-items: center;">
@@ -552,222 +374,44 @@
                             <div style="font-weight: bolder; margin-top: 8px; font-size: 16px;">
                                 Kênh đã đăng ký
                             </div>
-                            <div class="row sm-gutters">
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA kkkkkk
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
+                            <% if(streamers){ %>
+                                <% streamers.forEach((x) => {%>
+                                    <div class="row sm-gutters">
+                                        <div class="col l-2-4">
+                                            <!-- product item -->
+                                            <a href="/live/<%= x.name %>" class="home-product-item">
+                                                <img style="width: 100%; height: 170px;" class="img-live-style"
+                                                    src="/img/live1.jpg" alt="">
+    
+                                                <div style="display: flex; margin-top: 8px;">
+                                                    <img src="/img/img_cat1.png" class="style-img-live" alt="">
+                                                    <div class="ml-5" style="width: 100%;">
+                                                        <div
+                                                            style="display: flex; justify-content: space-between; width: 100%;">
+                                                            <span class="restyle-p ml-5 header__cart-item-name"
+                                                                style="font-weight: bolder;">!MOUNT🔴!PARAGON!
+                                                                DROPS KAKKAKAK AKAOAIAIAOSIGAGA
+                                                            </span>
+                                                            <i style="margin-right: 8px;"
+                                                                class="fa-solid fa-ellipsis-vertical"></i>
+                                                        </div>
+                                                        <p class="ml-5 restyle-p mt-3"><%= x.name %></p>
+                                                        <p class="ml-5 restyle-p mt-3">Diablo IV</p>
+                                                    </div>
                                                 </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
+        
+                                                <div class="home-product-item__favourite">
+                                                    <span>LIVE</span>
                                                 </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
+                                            </a>
                                         </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="col l-2-4 m-4 c-6">
-                                    <!-- product item -->
-                                    <a href="##" class="home-product-item">
-                                        <!-- <div class="home-product-item__img"
-                                            style="background-image: url(/assets/img/live1.jpg);">
-                                        </div> -->
-
-                                        <img style="width: 100%; height: 170px;" class="img-live-style"
-                                            src="/img/live1.jpg" alt="">
-
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <img src="/img/img_cat1.png" class="style-img-live" alt="">
-                                            <div class="ml-5" style="width: 100%;">
-                                                <div
-                                                    style="display: flex; justify-content: space-between; width: 100%;">
-                                                    <span class="restyle-p ml-5 header__cart-item-name"
-                                                        style="font-weight: bolder;">!MOUNT🔴!PARAGON!
-                                                        DROPS KAKKAKAK AKAOAIAIAOSIGAGA
-                                                    </span>
-                                                    <i style="margin-right: 8px;"
-                                                        class="fa-solid fa-ellipsis-vertical"></i>
-                                                </div>
-                                                <p class="ml-5 restyle-p mt-3">Fextralife</p>
-                                                <p class="ml-5 restyle-p mt-3">Diablo IV</p>
-                                                <!-- <div class="mt-3 mb-5">
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; color: #53535f;">
-                                                        English
-                                                    </span>
-                                                    <span class="pl-r-4"
-                                                        style="background-color: #e7e7ea; width: auto; margin-left: 5px; color: #53535f;">
-                                                        DropsEnabled
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="home-product-item__favourite">
-                                            <span>LIVE</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                                <%}) %>
+                            <%}else {%>
+                                <div class="row sm-gutters">
+                                    <div style="text-align: center;" class="col l-12">
+                                        <h3>Hiện không có stremer trực tuyến </h3>
+                                    </div>
+                            <%} %>
                             <!-- <div class="row">
                                 <div class="c-12 mt-8"
                                     style="display: flex; justify-content: center; align-items: center;">
@@ -925,8 +569,9 @@
                     <div class="mt-8">
                         <h2>Thanh toán bằng</h2>
                         <div class="d-flex justify-content-between">
-                            <button class="btn" style="background-color: #f90; width: 48%; color: #fff;">
-                                Paypal</button>
+                            <form action="/pay" method="post" class="btn" style=" width: 48%; color: #fff;">
+                                <input style="width: 234px; height: 34px; background-color: #f90; border: #f90;" type="submit" value="PayPal">
+                            </form>
                             <button class="btn" style="width: 48%; background-color: #89898b;">Trở lại
                             </button>
                         </div>
