@@ -423,11 +423,14 @@ closeModalButton.forEach(e => {
 })
 
 // bits
+let Anna = document.getElementById('Anna')
 let btnFinalBits = document.querySelectorAll("#btnFinalBits")
 let modalBits = document.querySelector("#modalBits")
 btnFinalBits.forEach(e => {
     e.addEventListener("click", () => {
         modalBits.style.display = 'block'
+        const txt = document.createTextNode(e.value)
+        Anna.appendChild(txt)
     })
 })
 

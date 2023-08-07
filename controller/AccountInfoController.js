@@ -1,3 +1,4 @@
+import Cookies from "universal-cookie";
 import cloud from "../sample";
 
 let getCreatorDashBoard = (req, res) => {
@@ -16,12 +17,14 @@ let getListFollower = (req, res) => {
         return res.render("./list_follower.ejs", {userName:cookies.UserName})
     }
 }
-let getAccountSetting = (req, res) => {
+let getAccountSetting = async(req, res) => {
     const cookies= req.cookies;
     if(cookies.UserName===null){
-        return res.render("./setting.ejs", {userName:''})
+        return res.render("./setting.ejs", {userName:'', data:''})
     }else{
-        return res.render("./setting.ejs", {userName:cookies.UserName})
+        const data= await cloud.GetHoSoNguoiDung(cookies.UserName)
+        console.log(data.Item.AnhDaiDienARN.S)
+        return res.render("./setting.ejs", {userName:cookies.UserName, data:data})
     }
 }
 let getAccountSettingSecurity = async(req, res) => {

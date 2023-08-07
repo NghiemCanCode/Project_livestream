@@ -97,6 +97,7 @@ let getDetailCategory = async(req, res) => {
             const user = await cloud.GetHoSoNguoiDung(getChannel.channel.name)
             console.log(user.Item)
             data.push({name: user.Item.TenDangNhap.S, AnhBia: user.Item.AnhBiaARN.S, view: StreamList.streams[i].viewerCount})
+            console.log(data)
             return res.render("./index.ejs", {errors: '', userName:cookies.UserName, streamers: data})
         }
         

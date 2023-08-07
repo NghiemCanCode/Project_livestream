@@ -46,6 +46,7 @@ paypal.configure({
 app.use(express.static('assets'));
 
 app.post('/pay', (req, res) => {
+  const sl = req.body.sl
   const create_payment_json = {
     "intent": "sale",
     "payer": {
@@ -58,18 +59,18 @@ app.post('/pay', (req, res) => {
     "transactions": [{
         "item_list": {
             "items": [{
-                "name": "Red Sox Hat",
+                "name": "20 Anna",
                 "sku": "001",
-                "price": "25.00",
+                "price": "20.00",
                 "currency": "USD",
                 "quantity": 1
             }]
         },
         "amount": {
             "currency": "USD",
-            "total": "25.00"
+            "total": "20.00"
         },
-        "description": "Hat for the best team ever"
+        "description": "Anna"
     }]
 };
 
@@ -95,7 +96,7 @@ app.get('/success', (req, res) => {
     "transactions": [{
         "amount": {
             "currency": "USD",
-            "total": "25.00"
+            "total": "20.00"
         }
     }]
   };
@@ -110,6 +111,7 @@ app.get('/success', (req, res) => {
         console.log(payment)
     }
 });
+res.redirect('/')
 });
 
 app.get('/cancel', (req, res) => res.send('Cancelled'));
